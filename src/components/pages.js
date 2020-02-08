@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Shop from './pages/shop';
-import Cart from './pages/cart';
-import Manage from './pages/manage';
-import Error from './pages/error';
+import Shop from '../pages/shop';
+import Cart from '../pages/cart';
+import Manage from '../pages/manage';
+import Error from '../pages/error';
 
 function Pages() { return (
    <div id={ 'innerbody' }>

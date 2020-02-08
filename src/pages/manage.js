@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Context } from "../context";
+import { Context } from "../components/context";
 import '../interface/css/innerbody.scss';
 
 function Manage() {

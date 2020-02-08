@@ -1,18 +1,35 @@
 // DEFUALT VALUES
 const values = {
    data: null,
-   current: 0
+   current: 0,
+
+   // PROMPT STUFF
+   prompt: {
+      visible: false,
+      type: null
+   }
 }
 
 // REDUCER
 function reducer(state, { type, payload }) {
    switch (type) {
 
-      // ON THE INITIAL PAGE LOAD
-      case 'init': { return {
+      // SHOW SPECIFIC PROMPT
+      case 'show-prompt': { return {
          ...state,
-         profiles: payload.profiles,
-         settings: payload.settings,
+         prompt: {
+            visible: true,
+            type: payload
+         }
+      }}
+
+      // HIDE PROMPT
+      case 'hide-prompt': { return {
+         ...state,
+         prompt: {
+            ...state.prompt,
+            visible: false
+         }
       }}
 
       // FALLBACK

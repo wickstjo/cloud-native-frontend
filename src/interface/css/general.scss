@@ -23,3 +23,19 @@ a {
    width: 100%;
    height: 100%;
 }
+
+.split {
+   display: table;
+   width: 100%;
+
+   div {
+      display: table-cell;
+      width: auto;
+      text-align: left;
+      vertical-align: top;
+   }
+
+   div:nth-child(2) {
+      text-align: right;
+   }
+}
