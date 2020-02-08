@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import Todos from './components/Todos';
-import './interface/css/general.css';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "./context";
+import './interface/css/general.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <div id="wrapper">
-         <Todos />
-      </div>
-    );
-  }
-}
+import Menu from './menu';
+import Pages from './pages';
+
+function App() { return (
+   <BrowserRouter>
+      <Provider>
+         <div id={ 'wrapper' }>
+            <Menu />
+            <Pages />
+         </div>
+      </Provider>
+   </BrowserRouter>
+)}
 
 export default App;
