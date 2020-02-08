@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import { Context } from "../context";
 import '../interface/css/innerbody.scss';
 
-function Other() {
+function Manage() {
    
    // GLOBAL CONTEXT
    const { state, dispatch } = useContext(Context);
 
    return (
-      <div id={ 'innerbody' }>
-          Other
+      <div className={ 'inner' }>
+         Manage
       </div>
    )
 }
 
-export default Other;
+export default Manage;

@@ -1,6 +1,10 @@
 #innerbody {
+   display: table-row;
    background: yellow;
-   padding: 10px;
+
+   .inner {
+      padding: 10px;
+   }
 }
 
 input {

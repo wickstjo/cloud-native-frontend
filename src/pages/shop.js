@@ -2,18 +2,16 @@ import React, { useContext } from 'react';
 import { Context } from "../context";
 import '../interface/css/innerbody.scss';
 
-import Button from "../components/button";
-
-function Home() {
+function Shop() {
    
    // GLOBAL CONTEXT
    const { state, dispatch } = useContext(Context);
 
    return (
-      <div id={ 'innerbody' }>
-         <Button placeholder={ 'foobar' } />
+      <div className={ 'inner' }>
+         Shop
       </div>
    )
 }
 
-export default Home;
+export default Shop;

@@ -5,14 +5,14 @@ const values = {
 }
 
 // REDUCER
-function reducer(state, action) {
-   switch (action.type) {
+function reducer(state, { type, payload }) {
+   switch (type) {
 
       // ON THE INITIAL PAGE LOAD
       case 'init': { return {
          ...state,
-         profiles: action.payload.profiles,
-         settings: action.payload.settings,
+         profiles: payload.profiles,
+         settings: payload.settings,
       }}
 
       // FALLBACK

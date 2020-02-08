@@ -1,16 +1,20 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './pages/home';
-import Other from './pages/other';
+import Shop from './pages/shop';
+import Cart from './pages/cart';
+import Manage from './pages/manage';
 import Error from './pages/error';
 
 function Pages() { return (
-   <Switch>
-      <Route exact path={ '/' } component={ Home } />
-      <Route path={ '/other' } component={ Other } />
-      <Route component={ Error } />
-   </Switch>
+   <div id={ 'innerbody' }>
+      <Switch>
+         <Route exact path={ '/' } component={ Shop } />
+         <Route path={ '/cart' } component={ Cart } />
+         <Route path={ '/manage' } component={ Manage } />
+         <Route component={ Error } />
+      </Switch>
+   </div>
 )}
 
 export default Pages;
