@@ -1,7 +1,7 @@
 // DEFUALT VALUES
 const values = {
-   data: null,
-   current: 0,
+   logged: false,
+   user: null,
 
    // PROMPT STUFF
    prompt: {
@@ -26,6 +26,28 @@ function reducer(state, { type, payload }) {
       // HIDE PROMPT
       case 'hide-prompt': { return {
          ...state,
+         prompt: {
+            ...state.prompt,
+            visible: false
+         }
+      }}
+
+      // LOGIN
+      case 'login': { return {
+         ...state,
+         logged: true,
+         user: payload,
+         prompt: {
+            ...state.prompt,
+            visible: false
+         }
+      }}
+
+      // LOGOUT
+      case 'logout': { return {
+         ...state,
+         logged: false,
+         user: null,
          prompt: {
             ...state.prompt,
             visible: false
