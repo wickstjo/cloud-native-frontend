@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Button({ placeholder }) {
+function Field({ placeholder }) {
 
     // LOCAL STATE
    const [local, set_local] = useState({
@@ -16,13 +16,16 @@ function Button({ placeholder }) {
     }
     
     return (
-        <input
-            type={ 'text' }
-            placeholder={ placeholder }
-            onChange={ update }
-            value={ local.input }
-        />
+        <div>
+            <input
+                type={ 'text' }
+                placeholder={ placeholder }
+                onChange={ update }
+                value={ local.input }
+                className={ 'field' }
+            />
+        </div>
     )
 }
 
-export default Button;
+export default Field;

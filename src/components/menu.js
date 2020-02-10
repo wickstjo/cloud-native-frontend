@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Context } from "./context";
 import '../interface/css/menu.scss';
 
@@ -8,14 +8,14 @@ import MenuTrigger from './menu/trigger'
 function Menu() {
 
     // GLOBAL STATE
-    const { dispatch } = useContext(Context);
+    const { state, dispatch } = useContext(Context);
 
     // REGISTER PROMPT
     function register() {
         dispatch({
             type: 'show-prompt',
             payload: 'register'
-         })
+        })
     }
 
     // LOGIN PROMPT
@@ -23,20 +23,39 @@ function Menu() {
         dispatch({
             type: 'show-prompt',
             payload: 'login'
-         })
+        })
+    }
+
+    // LOGOUT
+    function logout() {
+        dispatch({ type: 'logout' })
     }
     
     return (
         <div id="menu">
             <div className={ 'split' }>
                 <div>
-                    <MenuItem header={ 'Shop' } link={ '/' } />
-                    <MenuItem header={ 'Cart' } link={ '/cart' } />
-                    <MenuItem header={ 'Manage' } link={ '/manage' } />
+                    <MenuItem
+                        header={ 'Shop' }
+                        link={ '/' }
+                    />
+                    <MenuItem
+                        header={ 'Cart' }
+                        link={ '/cart' }
+                    />
                 </div>
                 <div>
-                    <MenuTrigger header={ 'Register' } func={ register } />
-                    <MenuTrigger header={ 'Login' } func={ login } />
+                    { state.logged ? (
+                        <Fragment>
+                            <MenuItem header={ 'Manage' } link={ '/manage' } />
+                            <MenuTrigger header={ 'Logout (' + state.user + ')' } func={ logout } />
+                        </Fragment>
+                    ):(
+                        <Fragment>
+                            <MenuTrigger header={ 'Register' } func={ register } />
+                            <MenuTrigger header={ 'Login' } func={ login } />
+                        </Fragment>
+                    )}
                 </div>
             </div>
         </div>
