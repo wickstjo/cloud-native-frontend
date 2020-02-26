@@ -1,0 +1,51 @@
+#shop {
+   color: white;
+   
+   .product {
+      display: flex;
+      background: red;
+      margin-bottom: 10px;
+
+      > div:nth-child(1) {
+         flex: 1;
+
+         #header, #description {
+            background: green;
+
+            #price, #name {
+               padding: 5px 7px 6px 7px;
+               display: inline-block;
+            }
+
+            #price {
+               background: blue;
+            }
+         }
+
+         #description {
+            background: red;
+            padding: 5px;
+            padding-left: 7px;
+            padding-bottom: 6px;
+         }
+      }
+
+      > div:nth-child(2) {
+         background: blue;
+         width: 63px;
+
+         #add {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+         }
+      }
+   }
+
+   .product:last-child {
+      margin-bottom: 0px
+   }
+}

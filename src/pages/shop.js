@@ -1,23 +1,19 @@
-import React, { useContext, useEffect } from 'react';
-import { Context } from "../components/context";
+import React from 'react';
 import '../interface/css/innerbody.scss';
-import Product from "../components/shop/product"
+import '../interface/css/shop.scss';
 
-var data = require('../MOCK_DATA(2).json')
+import data from '../data/products.json';
+import Product from "../components/shop/product";
 
-
-function Shop() {
-   
-   // GLOBAL CONTEXT
-   const { state, dispatch } = useContext(Context);
-   
-   return (
-      <div className={ 'inner' } id={'shop'}>
-        {data.map(e => {
-          return(<Product product={e} key={e["id"]}/>)
-        })}
-      </div>
-   )
-}
+function Shop() { return (
+    <div className={ 'inner' } id={ 'shop' }>
+        { data.map((product, index) =>
+            <Product
+                product={ product }
+                key={ index }
+            />
+        )}
+    </div>
+)}
 
 export default Shop;

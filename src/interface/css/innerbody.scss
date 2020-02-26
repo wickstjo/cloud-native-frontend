@@ -2,8 +2,19 @@
    display: table-row;
    background: yellow;
 
+   // CHROME SCROLLBAR
+   ::-webkit-scrollbar { width: 10px; }
+   ::-webkit-scrollbar-track { background: gray; }
+   ::-webkit-scrollbar-thumb { background: blue; }
+
+   // FIREFOX SCROLLBAR
+   scrollbar-color: rgba(255, 255, 255, 0.404) #00000038;
+   scrollbar-width: thin;
+
    .inner {
       padding: 10px;
+      height: 100%;
+      overflow: auto;
    }
 }
 
@@ -19,13 +30,4 @@
 
 .button {
    margin-bottom: 0px;
-   cursor: pointer;
-   text-transform: uppercase;
 }
-
-#product {
-   margin: 15px;
-   float: left;
-   width: 300px;
-   height: 150px;
- }
