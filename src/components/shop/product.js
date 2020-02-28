@@ -1,19 +1,27 @@
 import React, { useContext } from 'react';
 import { Context } from "../../components/context";
 
-function Product({ product }) {
+function Product({ details, id }) {
 
     // GLOBAL CONTEXT
-    const { dispatch } = useContext(Context);
+    const { state, dispatch } = useContext(Context);
     
     // ADD ITEM TO CART
     function add() {
         dispatch({
             type: 'add-item',
             payload: {
-                id: product.id,
+                id: id,
                 amount: 1
             }
+        })
+    }
+
+    // REMOVE ITEM FROM CART
+    function remove() {
+        dispatch({
+            type: 'remove-item',
+            payload: id
         })
     }
 
@@ -21,16 +29,36 @@ function Product({ product }) {
         <div className={ 'product' }>
             <div>
                 <div id={ 'header' }>
-                    <div id={ 'price' }>{ product.price }</div>
-                    <div id={ 'name' }>{ product.name }</div>
+                    <div id={ 'price' }>{ details.price }</div>
+                    <div id={ 'name' }>{ details.name }</div>
                 </div>
-                <div id={ 'description' }>{ product.description }</div>
+                <div id={ 'description' }>{ details.description }</div>
             </div>
             <div>
-                <div id={ 'add' } onClick={ add }>ADD</div>
+                <Button
+                    exists={ state.cart[id] }
+                    add={ add }
+                    remove={ remove }
+                />
             </div>
         </div>
     )
+}
+
+// CHANGE BUTTON IF ITEM EXISTS IN CART
+function Button({ exists, add, remove }) {
+    switch(exists) {
+        
+        // ADD BUTTON
+        case undefined: { return (
+            <div id={ 'add' } onClick={ add }>ADD</div>
+        )}
+
+        // REMOVE BUTTON
+        default:  { return (
+            <div id={ 'remove' } onClick={ remove }>DEL</div>
+        )}
+    }
 }
 
 export default Product;

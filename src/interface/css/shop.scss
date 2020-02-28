@@ -31,16 +31,20 @@
       }
 
       > div:nth-child(2) {
-         background: blue;
          width: 63px;
 
-         #add {
+         #add, #remove {
+            background: blue;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
             width: 100%;
             cursor: pointer;
+         }
+
+         #remove {
+            background: purple;
          }
       }
    }

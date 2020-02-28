@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Context } from "../components/context";
 import '../interface/css/innerbody.scss';
 
+import Item from "../components/cart/item";
+
 function Cart() {
    
    // GLOBAL CONTEXT
@@ -9,7 +11,12 @@ function Cart() {
 
    return (
       <div className={ 'inner' }>
-         Cart
+         { Object.keys(state.cart).map((id, index) =>
+            <Item
+               id={ id }
+               key={ index }
+            />
+         )}
       </div>
    )
 }
