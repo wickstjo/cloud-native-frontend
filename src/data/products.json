@@ -4,277 +4,277 @@
         "category": "Pate",
         "name": "Peppercorn",
         "description": "Legal intervnt w oth sharp obj, law enforc offl inj, sequela",
-        "price":  "€82,29"
+        "price":  "82.29"
     },
     {
         "id": 2,
         "category": "Seeds",
         "name": "Flax Seed",
         "description": "Disp fx of hook pro of hamate bone, unsp wrs, 7thB",
-        "price": "€105,14"
+        "price": "105.14"
     },
     {
         "id": 3,
         "category": "Coffee",
         "name": "Filter",
         "description": "Unspecified brain damage due to birth injury",
-        "price": "€74,82"
+        "price": "74.82"
     },
     {
         "id": 4,
         "category": "Wine",
         "name": "Sake",
         "description": "Central cord synd at unsp level of cerv spinal cord, init",
-        "price": "€227,32"
+        "price": "227.32"
     },
     {
         "id": 5,
         "category": "Soup",
         "name": "Campbells, Spinach Crm",
         "description": "External constriction, left great toe",
-        "price": "€238,73"
+        "price": "238.73"
     },
     {
         "id": 6,
         "category": "Tea",
         "name": "Apple Green Tea",
         "description": "Other infective bursitis, right elbow",
-        "price": "€57,70"
+        "price": "57.70"
     },
     {
         "id": 7,
         "category": "Ecolab",
         "name": "Ster Bac",
         "description": "Burn of second degree of unsp scapular region, sequela",
-        "price": "€76,62"
+        "price": "76.62"
     },
     {
         "id": 8,
         "category": "Salt",
         "name": "Kosher Salt",
         "description": "Unspecified open wound of breast",
-        "price": "€154,63"
+        "price": "154.63"
     },
     {
         "id": 9,
         "category": "Misc",
         "name": "13 Inch",
         "description": "Nondisp fx of distal phalanx of left lesser toe(s), sequela",
-        "price": "€84,95"
+        "price": "84.95"
     },
     {
         "id": 10,
         "category": "Turkey",
         "name": "Breast, Boneless Sk On",
         "description": "Military operations involving unarmed hand to hand combat",
-        "price": "€145,08"
+        "price": "145.08"
     },
     {
         "id": 11,
         "category": "Beer",
         "name": "Heinekin",
         "description": "Retrograde amnesia",
-        "price": "€8,56"
+        "price": "8.56"
     },
     {
         "id": 12,
         "category": "Bar Mix",
         "name": "Pina Colada, 355 Ml",
         "description": "War operations involving unspecified explosion and fragments",
-        "price": "€123,22"
+        "price": "123.22"
     },
     {
         "id": 13,
         "category": "Wine",
         "name": "Cousino Macul Antiguas",
         "description": "Poisn by emollients, demulcents and protect, undet, sequela",
-        "price": "€103,58"
+        "price": "103.58"
     },
     {
         "id": 14,
         "category": "Rice",
         "name": "Long Grain",
         "description": "Other specified disorders of kidney and ureter",
-        "price": "€149,76"
+        "price": "149.76"
     },
     {
         "id": 15,
         "category": "Pepper",
         "name": "Green Thai",
         "description": "Underdosing of oth fibrinolysis-affecting drugs, init encntr",
-        "price": "€245,95"
+        "price": "245.95"
     },
     {
         "id": 16,
         "category": "Misc",
         "name": "Chef Hat 20cm",
         "description": "Nondisp fx of base of fourth MC bone, right hand, sequela",
-        "price": "€135,21"
+        "price": "135.21"
     },
     {
         "id": 17,
         "category": "Nutmeg",
         "name": "Ground Nutmeg",
         "description": "Other physeal fracture of left calcaneus, 7thB",
-        "price": "€55,89"
+        "price": "55.89"
     },
     {
         "id": 18,
         "category": "Turnip",
         "name": "Wax",
         "description": "Oth fx lower end of left tibia, subs for clos fx w nonunion",
-        "price": "€18,92"
+        "price": "18.92"
     },
     {
         "id": 19,
         "category": "Roe",
         "name": "Lump Fish, Red",
         "description": "Perform of proc (op) on patient not scheduled for surgery",
-        "price": "€178,23"
+        "price": "178.23"
     },
     {
         "id": 20,
         "category": "Capers",
         "name": "Ox Eye Daisy",
         "description": "Nondisplaced pilon fracture of left tibia, sequela",
-        "price": "€177,46"
+        "price": "177.46"
     },
     {
         "id": 21,
         "category": "Chocolate",
         "name": "Feathers",
         "description": "Villonodular synovitis (pigmented), right ankle and foot",
-        "price": "€98,06"
+        "price": "98.06"
     },
     {
         "id": 22,
         "category": "Icecream",
         "name": "Dibs",
         "description": "Poisn by antimalari/drugs acting on bld protzoa, acc, subs",
-        "price": "€121,97"
+        "price": "121.97"
     },
     {
         "id": 23,
         "category": "Olives",
         "name": "Green, Pitted",
         "description": "Ureteritis cystica",
-        "price": "€67,34"
+        "price": "67.34"
     },
     {
         "id": 24,
         "category": "Wine",
         "name": "Jafflin Bourgongone",
         "description": "Effect of heat and light, unspecified, initial encounter",
-        "price": "€45,27"
+        "price": "45.27"
     },
     {
         "id": 25,
         "category": "Misc",
         "name": "Pepsi, 355 Ml",
         "description": "Posterior arch fracture of first cervical vertebra",
-        "price": "€102,30"
+        "price": "102.30"
     },
     {
         "id": 26,
         "category": "Flour",
         "name": "Bread",
         "description": "Nondisp transverse fx shaft of unsp femr, 7thC",
-        "price": "€181,97"
+        "price": "181.97"
     },
     {
         "id": 27,
         "category": "Pepper",
         "name": "Black, Whole",
         "description": "Unsp pedl cyclst inj in clsn w oth pedl cyc in traf, sequela",
-        "price": "€204,55"
+        "price": "204.55"
     },
     {
         "id": 28,
         "category": "Mushroom",
         "name": "Crimini Mushroom",
         "description": "Mtrcy pasngr injured in clsn w rail trn/veh nontraf, sequela",
-        "price": "€28,28"
+        "price": "28.28"
     },
     {
         "id": 29,
         "category": "Calypso",
         "name": "Lemonade",
         "description": "Burn of unspecified degree of trunk",
-        "price": "€94,22"
+        "price": "94.22"
     },
     {
         "id": 30,
         "category": "Wine",
         "name": "Casillero Deldiablo",
         "description": "Bucket-hndl tear of unsp meniscus, current injury, unsp knee",
-        "price": "€77,35"
+        "price": "77.35"
     },
     {
         "id": 31,
         "category": "Beef",
         "name": "Rib Roast, Cap On",
         "description": "Corrosion of second degree of unspecified elbow, init encntr",
-        "price": "€35,59"
+        "price": "35.59"
     },
     {
         "id": 32,
         "category": "Yogurt",
         "name": "Blueberry, 175 Gr",
         "description": "Squamous cell carcinoma of anal skin",
-        "price": "€55,49"
+        "price": "55.49"
     },
     {
         "id": 33,
         "category": "Misc",
         "name": "Foie Gras",
         "description": "Nondisp fx of low epiphy (separation) of l femr, 7thM",
-        "price": "€248,12"
+        "price": "248.12"
     },
     {
         "id": 34,
         "category": "Lettuce",
         "name": "Sea Asparagus",
         "description": "I/I react d/t other urinary catheter, initial encounter",
-        "price": "€230,83"
+        "price": "230.83"
     },
     {
         "id": 35,
         "category": "Bouillion",
         "name": "Fish",
         "description": "Burn due to localized fire on board passenger vessel, subs",
-        "price": "€166,55"
+        "price": "166.55"
     },
     {
         "id": 36,
         "category": "Misc",
         "name": "Phyllo Dough",
         "description": "Sltr-haris Type III physl fx low end ulna, r arm, 7thD",
-        "price": "€181,32"
+        "price": "181.32"
     },
     {
         "id": 37,
         "category": "Vinegar",
         "name": "White Vinegar",
         "description": "Sltr-haris Type III physeal fx phalanx of unsp toe, 7thK",
-        "price": "€168,95"
+        "price": "168.95"
     },
     {
         "id": 38,
         "category": "Potatoes",
         "name": "Idaho 80 Count",
         "description": "Subluxation of L2/L3 lumbar vertebra, subsequent encounter",
-        "price": "€116,15"
+        "price": "116.15"
     },
     {
         "id": 39,
         "category": "Container",
         "name": "Hngd Cll Blk 7x7x3",
         "description": "Polyhydramnios, first trimester, fetus 5",
-        "price": "€28,85"
+        "price": "28.85"
     },
     {
         "id": 40,
         "category": "Soup",
         "name": "Base Broth Chix",
         "description": "Lobster-claw left hand",
-        "price": "€122,40"}]
+        "price": "122.40"}]

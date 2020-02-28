@@ -1,23 +1,55 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from "../context";
 
-function Item({ id, amount }) {
+function Item({ id }) {
 
-    // GLOBAL CONTEXT
+    // GLOBAL STATE
     const { state, dispatch } = useContext(Context);
+
+    // LOCAL STATE
+    const [local, set_local] = useState({
+        price: 0,
+        amount: 0,
+        name: '',
+    })
     
-    // INCREASE 
+    // SET VALUES IN LOCAL STATE
+    useEffect(() => {
+        set_local({
+            price: state.products[id].price,
+            amount: state.cart[id],
+            name: state.products[id].name
+        })
+    }, [state.cart])
+
+    // INCREASE AMOUNT
     function increase() {
         dispatch({
-            type: 'increase',
-            payload: id
+            type: 'change-amount',
+            payload: {
+                id: id,
+                amount: local.amount + 1
+            }
         })
     }
 
-    // DECREASE ITEM AMOUNT
+    // DECREASE AMOUNT
     function decrease() {
+        if (local.amount > 1) {
+            dispatch({
+                type: 'change-amount',
+                payload: {
+                    id: id,
+                    amount: local.amount - 1
+                }
+            })
+        }
+    }
+
+    // REMOVE ITEM 
+    function remove() {
         dispatch({
-            type: 'decrease',
+            type: 'remove-item',
             payload: id
         })
     }
@@ -25,10 +57,14 @@ function Item({ id, amount }) {
     return (
         <div className={ 'item' }>
             <div>
-                { state.products[id].name }
+                <div id={ 'amount' }>{ local.amount }x</div>
+                <div id={ 'name' }>{ local.name }</div>
             </div>
             <div>
-                { state.cart[id] }
+                <div id={ 'increase' } onClick={ increase }>Increase</div>
+                <div id={ 'decrease' } onClick={ decrease }>Decrease</div>
+                <div id={ 'remove' } onClick={ remove }>Remove</div>
+                <div id={ 'price' }>{ (local.amount * local.price).toFixed(2) }</div>
             </div>
         </div>
     )

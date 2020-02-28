@@ -30,7 +30,9 @@ function Init() {
          'type': 'init',
          'payload': container
       })
-   }, [dispatch])
+
+   // eslint-disable-next-line
+   }, [])
 
    return null;
 }

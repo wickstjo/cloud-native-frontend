@@ -1,0 +1,57 @@
+#cart {
+   
+   .item {
+      display: flex;
+      background: red;
+      margin-bottom: 2px;
+      color: white;
+
+      > div:nth-child(1) {
+         flex: 1;
+
+         #amount, #name {
+            padding: 5px 7px 6px 7px;
+            display: inline-block;
+         }
+
+         #amount {
+            background: blue;
+            min-width: 40px;
+            text-align: center;
+         }
+      }
+
+      > div:nth-child(2) {
+         display: flex;
+
+         #increase, #decrease, #remove, #price {
+            padding: 5px 7px 6px 7px;
+            background: purple;
+            text-align: center;
+            min-width: 70px;
+         }
+
+         #increase, #decrease, #remove {
+            background: green;
+            margin-right: 1px;
+            cursor: pointer;
+         }
+      }
+   }
+
+   #result {
+      display: flex;
+      padding: 5px 7px 6px 7px;
+      background: blue;
+      color: white;
+
+      #header {
+         flex: 1;
+      }
+
+      #total {
+         flex: 1;
+         text-align: right;
+      }
+   }
+}
