@@ -1,10 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Context } from "../../components/context";
+import React, { useEffect, useState } from 'react';
 
-function Result() {
-
-    // GLOBAL STATE
-    const { state } = useContext(Context);
+function Result({ cart, products }) {
 
     // LOCAL STATE
     const [total, set_total] = useState(0)
@@ -16,13 +12,15 @@ function Result() {
         let price = 0;
 
         // LOOP THROUGH EACH ITEM
-        Object.keys(state.cart).map(item =>
-            price += state.cart[item] * state.products[item].price
+        Object.keys(cart).map(item =>
+            price += cart[item] * products[item].price
         )
 
         // SET IN LOCAL STATE
         set_total(price.toFixed(2))
-    }, [state])
+
+    // eslint-disable-next-line
+    }, [cart, Object.keys(cart).length])
 
     return (
         <div id={ 'result' }>

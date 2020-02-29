@@ -5,6 +5,7 @@
       background: red;
       margin-bottom: 2px;
       color: white;
+      border: 2px solid red;
 
       > div:nth-child(1) {
          flex: 1;
@@ -33,7 +34,7 @@
 
          #increase, #decrease, #remove {
             background: green;
-            margin-right: 1px;
+            margin-right: 2px;
             cursor: pointer;
          }
       }

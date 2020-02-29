@@ -13,27 +13,36 @@ function Cart() {
 
    return (
       <div className={ 'inner' } id={ 'cart' }>
-         <Items data={ Object.keys(state.cart) } />
+         <Items
+            keys={ Object.keys(state.cart) }
+            cart={ state.cart }
+            products={ state.products }
+         />
       </div>
    )
 }
 
-function Items({ data }) {
-   switch(data.length) {
+function Items({ keys, cart, products }) {
+   switch(keys.length) {
       
+      // NO ITEMS EXIST
       case 0: { return (
          <div>The cart contains nothing.</div>
       )}
 
+      // SOME ITEMS EXIST
       default: { return (
          <Fragment>
-            { data.map((id, index) =>
+            { keys.map((id, index) =>
                <Item
                   id={ id }
                   key={ index }
                />
             )}
-            <Result />
+            <Result
+               cart={ cart }
+               products={ products }
+            />
          </Fragment>
       )}
    }

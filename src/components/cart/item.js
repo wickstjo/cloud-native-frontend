@@ -10,7 +10,7 @@ function Item({ id }) {
     const [local, set_local] = useState({
         price: 0,
         amount: 0,
-        name: '',
+        name: ''
     })
     
     // SET VALUES IN LOCAL STATE
@@ -20,12 +20,14 @@ function Item({ id }) {
             amount: state.cart[id],
             name: state.products[id].name
         })
-    }, [state.cart])
+
+    // eslint-disable-next-line
+    }, [state.cart, Object.keys(state.cart).length])
 
     // INCREASE AMOUNT
     function increase() {
         dispatch({
-            type: 'change-amount',
+            type: 'add-item',
             payload: {
                 id: id,
                 amount: local.amount + 1
@@ -37,7 +39,7 @@ function Item({ id }) {
     function decrease() {
         if (local.amount > 1) {
             dispatch({
-                type: 'change-amount',
+                type: 'add-item',
                 payload: {
                     id: id,
                     amount: local.amount - 1

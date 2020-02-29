@@ -90,14 +90,6 @@ function reducer(state, { type, payload }) {
          })
       }}
 
-      case 'change-amount': { return {
-         ...state,
-         cart: {
-            ...state.cart,
-            [payload.id]: payload.amount
-         }
-      }}
-
       // FALLBACK
       default: {
          console.log('CONTEXT REDUCER TYPE NOT FOUND');
