@@ -9,8 +9,11 @@
    padding: 0px;
 }
 
-body, div {
+body {
+   background-color: rgb(56, 56, 56);
+   background-image: url('../images/bg.png');
    font: 13px 'Open Sans', verdana;
+   color: #505050;
 }
 
 a {

@@ -66,7 +66,7 @@ function Item({ id }) {
                 <div id={ 'increase' } onClick={ increase }>Increase</div>
                 <div id={ 'decrease' } onClick={ decrease }>Decrease</div>
                 <div id={ 'remove' } onClick={ remove }>Remove</div>
-                <div id={ 'price' }>{ (local.amount * local.price).toFixed(2) }</div>
+                <div id={ 'price' }>{ (local.amount * local.price).toFixed(2) }€</div>
             </div>
         </div>
     )

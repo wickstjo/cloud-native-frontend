@@ -29,7 +29,7 @@ function Product({ details, id }) {
         <div className={ 'product' }>
             <div>
                 <div id={ 'header' }>
-                    <div id={ 'price' }>{ details.price }</div>
+                    <div id={ 'price' }>{ details.price }€</div>
                     <div id={ 'name' }>{ details.name }</div>
                 </div>
                 <div id={ 'description' }>{ details.description }</div>
