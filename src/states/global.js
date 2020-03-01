@@ -1,4 +1,4 @@
-import { remove } from '../funcs/misc';
+import { update, remove } from '../funcs/localstorage';
 
 // DEFUALT VALUES
 const values = {
@@ -29,7 +29,8 @@ function reducer(state, { type, payload }) {
 
       case 'init': { return {
          ...state,
-         products: payload
+         products: payload.products,
+         cart: payload.cart
       }}
 
       // SHOW SPECIFIC PROMPT
@@ -75,10 +76,10 @@ function reducer(state, { type, payload }) {
       // ADD ITEM TO CART
       case 'add-item': { return {
          ...state,
-         cart: {
-            ...state.cart,
-            [payload.id]: payload.amount
-         }
+         cart: update({
+            data: payload,
+            cart: state.cart
+         })
       }}
 
       // REMOVE ITEM FROM CART
@@ -86,7 +87,7 @@ function reducer(state, { type, payload }) {
          ...state,
          cart: remove({
             key: payload,
-            object: state.cart
+            cart: state.cart
          })
       }}
 

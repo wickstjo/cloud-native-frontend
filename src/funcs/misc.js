@@ -21,14 +21,7 @@ function key_listener(state, dispatch, event, func) {
    }
 }
 
-// REMOVE KEY FROM OBJECT
-function remove({ key, object }) {
-   delete object[key]
-   return object;
-}
-
 export {
    sleep,
-   key_listener,
-   remove
+   key_listener
 }

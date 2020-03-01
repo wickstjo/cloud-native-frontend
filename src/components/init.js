@@ -2,6 +2,8 @@ import { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import '../interface/css/prompt.scss';
 
+import { init } from '../funcs/localstorage';
+
 import products from '../data/products.json';
 
 // PROMPT CONTAINER
@@ -27,8 +29,11 @@ function Init() {
       })
 
       dispatch({
-         'type': 'init',
-         'payload': container
+         type: 'init',
+         payload: {
+            products: container,
+            cart: init()
+         }
       })
 
    // eslint-disable-next-line
