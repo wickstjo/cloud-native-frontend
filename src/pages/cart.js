@@ -13,11 +13,13 @@ function Cart() {
 
    return (
       <div className={ 'inner' } id={ 'cart' }>
-         <Items
-            keys={ Object.keys(state.cart) }
-            cart={ state.cart }
-            products={ state.products }
-         />
+         <div>
+            <Items
+               keys={ Object.keys(state.cart) }
+               cart={ state.cart }
+               products={ state.products }
+            />
+         </div>
       </div>
    )
 }
@@ -27,7 +29,7 @@ function Items({ keys, cart, products }) {
       
       // NO ITEMS EXIST
       case 0: { return (
-         <div>The cart contains nothing.</div>
+         <div id={ 'empty' }>The cart contains nothing.</div>
       )}
 
       // SOME ITEMS EXIST

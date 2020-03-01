@@ -29,8 +29,8 @@ function Login() {
             />
             <div id={ 'header' }>Login</div>
             <div id={ 'content' }>
-                <Field placeholder={ 'email' } />
-                <Field placeholder={ 'password' } />
+                <Field placeholder={ 'Email' } />
+                <Field placeholder={ 'Password' } />
                 <Button value={ 'submit' } func={ login } />
             </div>
         </Fragment>

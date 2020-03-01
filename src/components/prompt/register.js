@@ -29,10 +29,10 @@ function Register() {
             />
             <div id={ 'header' }>Register</div>
             <div id={ 'content' }>
-                <Field placeholder={ 'email' } />
-                <Field placeholder={ 'location' } />
-                <Field placeholder={ 'password' } />
-                <Field placeholder={ 'password again' } />
+                <Field placeholder={ 'Email' } />
+                <Field placeholder={ 'Address' } />
+                <Field placeholder={ 'Password' } />
+                <Field placeholder={ 'Password Again' } />
                 <Button value={ 'submit' } func={ register } />
             </div>
         </Fragment>

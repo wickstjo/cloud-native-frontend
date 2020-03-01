@@ -25,7 +25,7 @@ function Result({ cart, products }) {
     return (
         <div id={ 'result' }>
             <div id={ 'header' }>Total:</div>
-            <div id={ 'total' }>{ total }</div>
+            <div id={ 'total' }>{ total }€</div>
         </div>
     )
 }

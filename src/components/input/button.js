@@ -6,7 +6,7 @@ function Button({ value, func }) { return (
             type={ 'submit' }
             onClick={ func }
             value={ value }
-            className={ 'button' }
+            id={ 'bad' }
         />
     </div>
 )}
