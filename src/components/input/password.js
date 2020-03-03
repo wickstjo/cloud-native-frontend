@@ -16,8 +16,8 @@ function Email({ value, placeholder, update, id }) {
     function validate(input) {
 
         // MEDIUM STRENGTH REGEX PATTERN
-        const regex = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/
-        
+        const regex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/ 
+
         // RESULT OF PATTERN MATCH
         const result =  regex.test(input);
 
