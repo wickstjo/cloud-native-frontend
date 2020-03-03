@@ -28,40 +28,6 @@
          padding: 3px;
          color: #333333;
          flex: 1;
-
-         input {
-            width: 100%;
-            outline: none;
-            padding: 5px;
-         }
-
-         .field {
-            background: rgba(255, 255, 255, 0.904);
-            border: 2px solid white;
-            color: #333333;
-            margin-bottom: 3px;
-         }
-
-         .field::placeholder {
-            font: 13px 'Open Sans', verdana;
-         }
-
-         #good, #bad {
-            background: rgba(87, 194, 65, 0.897);
-            border: 2px solid rgba(87, 194, 65, 0.911);
-            color: white;
-            transition: 0.3s;
-            text-transform: uppercase;
-         }
-         
-         #good {
-            cursor: pointer;
-         }
-         
-         #bad {
-            background: rgba(194, 65, 65, 0.897);
-            border: 2px solid rgba(199, 70, 70, 0.897);
-         }
       }
  
       // LOADING SCREEN -- https://loading.io/css/

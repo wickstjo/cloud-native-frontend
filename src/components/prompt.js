@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import { sleep } from "../funcs/misc";
 import '../interface/css/prompt.scss';
+import '../interface/css/input.scss';
 
 import Register from './prompt/register';
 import Login from './prompt/login';

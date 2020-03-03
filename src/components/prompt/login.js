@@ -1,15 +1,29 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useReducer } from 'react';
 import { Context } from "../context";
+import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
 import EventListener from 'react-event-listener';
-import Field from '../input/field';
+import Email from '../input/email';
+import Password from '../input/password';
 import Button from '../input/button';
 
 function Login() {
     
     // GLOBAL CONTEXT
     const { state, dispatch } = useContext(Context);
+    
+    // LOCAL INPUT STATE
+    const [local, set_local] = useReducer(reducer, {
+        email: {
+            value: '',
+            status: null
+        },
+        password: {
+            value: '',
+            status: null
+        }
+    })
 
     // LOGIN FUNC
     function login() {
@@ -29,9 +43,26 @@ function Login() {
             />
             <div id={ 'header' }>Login</div>
             <div id={ 'content' }>
-                <Field placeholder={ 'Email' } />
-                <Field placeholder={ 'Password' } />
-                <Button value={ 'submit' } func={ login } />
+                <Email
+                    placeholder={ 'Email' }
+                    value={ local.email.value }
+                    update={ set_local }
+                    id={ 'email' }
+                />
+                <Password
+                    placeholder={ 'Password' }
+                    value={ local.password.value }
+                    update={ set_local }
+                    id={ 'password' }
+                />
+                <Button
+                    header={ 'Login' }
+                    func={ login }
+                    require={[
+                        local.email.status,
+                        local.password.status
+                    ]}
+                />
             </div>
         </Fragment>
     )

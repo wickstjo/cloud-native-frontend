@@ -21,7 +21,34 @@ function key_listener(state, dispatch, event, func) {
    }
 }
 
+// VALIDATE INPUT VALUES
+function check_validation(values) {
+
+   // IF VALUES WERE DEFINED
+   if (values !== undefined) {
+
+      // DEFAULT TO TRUE
+      let response = true;
+
+      // LOOP THROUGH VALUES
+      for (let value of values) {
+         if (value !== true) {
+
+            // IF IT ISNT TRUE, SWITCH TO FALSE & STOP LOOPING
+            response = false;
+            break;
+         }
+      }
+
+      // FINALLY RETURN RESULT
+      return response;
+
+   // OTHERWISE, AUTOMATICALLY RETURN TRUE
+   } else { return true; }
+}
+
 export {
    sleep,
-   key_listener
+   key_listener,
+   check_validation
 }
