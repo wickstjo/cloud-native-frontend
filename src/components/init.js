@@ -2,10 +2,9 @@ import { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import '../interface/css/prompt.scss';
 
-//import { products } from '../funcs/api';
+//import { products, inventory } from '../funcs/api';
 import { init } from '../funcs/localstorage';
-
-import mock from '../data/temp.json';
+import mock from '../mock/products.json';
 
 // PROMPT CONTAINER
 function Init() {

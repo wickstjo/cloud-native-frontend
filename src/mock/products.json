@@ -228,8 +228,7 @@
       "url": "https://bra2tww5y1.execute-api.eu-west-1.amazonaws.com/dev/products",
       "method": "get",
       "headers": {
-        "Accept": "application/json, text/plain, */*",
-        "x-api-key": "u6UTSMhGhL94acaOd4NGg7F2zGJVpD46DuB3PD64"
+        "Accept": "application/json, text/plain, */*"
       },
       "transformRequest": [
         null
@@ -243,4 +242,4 @@
       "maxContentLength": -1
     },
     "request": {}
-  }
+}
