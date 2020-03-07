@@ -26,11 +26,13 @@ function Login() {
     })
 
     // LOGIN FUNC
-    function login() {
-        dispatch({
-            type: 'login',
-            payload: 'foobar'
-        })
+    function execute() {
+        if (local.email.status && local.password.status) {
+            dispatch({
+                type: 'login',
+                payload: 'foobar'
+            })
+        }
     }
     
     return (
@@ -38,7 +40,7 @@ function Login() {
             <EventListener
                 target={ 'window' }
                 onKeyDown={ event => {
-                    key_listener(state, dispatch, event, login)
+                    key_listener(state, dispatch, event, execute)
                 }}
             />
             <div id={ 'header' }>Login</div>
@@ -57,7 +59,7 @@ function Login() {
                 />
                 <Button
                     header={ 'Login' }
-                    func={ login }
+                    func={ execute }
                     require={[
                         local.email.status,
                         local.password.status

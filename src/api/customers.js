@@ -14,7 +14,7 @@ function login() {
 }
 
 function register(body) {
-    return axios.post('https://7hxuxvgjn2.execute-api.eu-central-1.amazonaws.com/dev/customers', {
+    return axios.post('https://7hxuxvgjn2.execute-api.eu-central-1.amazonaws.com/dev/customers', body, {
         headers: {
             "x-api-key": keys.customers
         }

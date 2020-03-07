@@ -6,6 +6,7 @@ import './interface/css/general.scss';
 import Menu from './components/menu';
 import Pages from './components/pages';
 import Prompt from './components/prompt';
+import Messages from './components/messages';
 import Init from './components/init';
 
 function App() { return (
@@ -16,6 +17,7 @@ function App() { return (
             <Pages />
          </div>
          <Prompt />
+         <Messages />
          <Init />
       </Provider>
    </BrowserRouter>

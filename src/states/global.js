@@ -20,7 +20,10 @@ const values = {
    },
 
    // SHOPPING CART
-   cart: {}
+   cart: {},
+
+   // ACTION MESSAGES
+   messages: [],
 }
 
 // REDUCER
@@ -77,18 +80,35 @@ function reducer(state, { type, payload }) {
       case 'add-item': { return {
          ...state,
          cart: update({
-            data: payload,
+            data: payload.data,
             cart: state.cart
-         })
+         }),
+         messages: [
+            ...state.messages,
+            payload.msg
+         ]
       }}
 
       // REMOVE ITEM FROM CART
       case 'remove-item': { return {
          ...state,
          cart: remove({
-            key: payload,
+            key: payload.key,
             cart: state.cart
-         })
+         }),
+         messages: [
+            ...state.messages,
+            payload.msg
+         ]
+      }}
+
+      // ADD MESSAGE
+      case 'add-message': { return {
+         ...state,
+         messages: [
+            ...state.messages,
+            payload
+         ]
       }}
 
       // FALLBACK

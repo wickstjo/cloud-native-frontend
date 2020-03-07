@@ -11,9 +11,13 @@ function Product({ details, id }) {
         dispatch({
             type: 'add-item',
             payload: {
-                id: id,
-                amount: 1
+                data: {
+                    id: id,
+                    amount: 1
+                },
+                msg: 'item added to cart'
             }
+            
         })
     }
 
@@ -21,7 +25,10 @@ function Product({ details, id }) {
     function remove() {
         dispatch({
             type: 'remove-item',
-            payload: id
+            payload: {
+                key: id,
+                msg: 'item removed from cart'
+            }
         })
     }
 

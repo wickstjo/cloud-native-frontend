@@ -43,11 +43,13 @@ function Register() {
     })
 
     // REGISTER FUNC
-    function register() {
-        dispatch({
-            type: 'login',
-            payload: 'foobar'
-        })
+    function execute() {
+        if (local.email.status && local.fname.status && local.lname.status && local.address.status && local.password.status && local.password_again.status && local.password.value === local.password_again.value) {
+            dispatch({
+                type: 'login',
+                payload: 'foobar'
+            })
+        }
     }
     
     return (
@@ -55,7 +57,7 @@ function Register() {
             <EventListener
                 target={ 'window' }
                 onKeyDown={ event => {
-                    key_listener(state, dispatch, event, register)
+                    key_listener(state, dispatch, event, execute)
                 }}
             />
             <div id={ 'header' }>Register</div>
@@ -101,9 +103,11 @@ function Register() {
                 />
                 <Button
                     header={ 'Register' }
-                    func={ register }
+                    func={ execute }
                     require={[
                         local.email.status,
+                        local.fname.status,
+                        local.lname.status,
                         local.address.status,
                         local.password.status,
                         local.password_again.status,
