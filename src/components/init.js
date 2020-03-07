@@ -2,9 +2,8 @@ import { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import '../interface/css/prompt.scss';
 
-//import { inventory, products_foo, customers } from '../funcs/api';
+import { products } from '../funcs/api';
 import { init } from '../funcs/localstorage';
-import products from '../data/products.json';
 
 // PROMPT CONTAINER
 function Init() {
@@ -18,22 +17,31 @@ function Init() {
       // CONTAINER
       const container = {}
 
-      // LOOP THROUGH & PUSH TO CONTAINER
-      products.forEach(element => {
-         container[element.id] = {
-            category: element.category,
-            name: element.name,
-            description: element.description,
-            price: element.price
-         }
-      })
+      // FETCH ALL PRODUCTS
+      products().then(response => {
 
-      dispatch({
-         type: 'init',
-         payload: {
-            products: container,
-            cart: init()
-         }
+         // IF EVERYTHING WENT OK
+         if (response.status === 200) {
+
+            // LOOP THROUGH & PUSH TO CONTAINER
+            response.data.forEach(element => {
+               container[element.productId] = {
+                  name: element.productName,
+                  description: element.productDesc,
+                  price: element.productPrice.replace(',', '.')
+               }
+            })
+      
+            dispatch({
+               type: 'init',
+               payload: {
+                  products: container,
+                  cart: init()
+               }
+            })
+         
+         // OTHERWISE, SHOW ERROR
+         } else { console.log('PRODUCT API ERROR') }
       })
 
    // eslint-disable-next-line

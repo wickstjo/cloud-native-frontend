@@ -11,7 +11,7 @@ function inventory(product) {
 }
 
 // FETCH ALL PRODUCTS
-function products_foo() {
+function products() {
     return axios.get('https://bra2tww5y1.execute-api.eu-west-1.amazonaws.com/dev/products', {
         headers: {
             "x-api-key": keys.products
@@ -30,6 +30,6 @@ function customers() {
 
 export {
     inventory,
-    products_foo,
+    products,
     customers
 }
