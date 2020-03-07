@@ -20,6 +20,14 @@ function Register() {
             value: '',
             status: null
         },
+        fname: {
+            value: '',
+            status: null
+        },
+        lname: {
+            value: '',
+            status: null
+        },
         address: {
             value: '',
             status: null
@@ -57,6 +65,20 @@ function Register() {
                     value={ local.email.value }
                     update={ set_local }
                     id={ 'email' }
+                />
+                <Text
+                    placeholder={ 'First Name' }
+                    value={ local.fname.value }
+                    range={[ 2, 20 ]}
+                    update={ set_local }
+                    id={ 'fname' }
+                />
+                <Text
+                    placeholder={ 'Last Name' }
+                    value={ local.lname.value }
+                    range={[ 2, 30 ]}
+                    update={ set_local }
+                    id={ 'lname' }
                 />
                 <Text
                     placeholder={ 'Address' }

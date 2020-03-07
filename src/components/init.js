@@ -2,8 +2,8 @@ import { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import '../interface/css/prompt.scss';
 
+//import { inventory, products_foo, customers } from '../funcs/api';
 import { init } from '../funcs/localstorage';
-
 import products from '../data/products.json';
 
 // PROMPT CONTAINER
