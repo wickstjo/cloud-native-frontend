@@ -1,0 +1,149 @@
+{
+  "data": [
+    {
+      "productId": "91025263-8117-49ee-83fe-9df6d3ea1dde",
+      "totalAmount": 15
+    },
+    {
+      "productId": "4d71bd14-cb7e-4b24-a858-8513b043e3fd",
+      "totalAmount": 5
+    },
+    {
+      "productId": "33d68416-bae6-4202-a1f6-b8d85c23910c",
+      "totalAmount": 16
+    },
+    {
+      "productId": "ab6fbce2-2d54-44e5-b64f-d8adf3e899fe",
+      "totalAmount": 8
+    },
+    {
+      "productId": "e7027ae6-6938-4d19-a7c2-0e2069dbdaa2",
+      "totalAmount": 1234
+    },
+    {
+      "productId": "9c358999-36cd-4f46-8f2d-99dc1e87a391",
+      "totalAmount": 5
+    },
+    {
+      "productId": "3d379035-eb0f-482c-8538-8478a3388b5f",
+      "totalAmount": 666
+    },
+    {
+      "productId": "1f107880-d297-460b-a411-5b8bba2e4d74",
+      "totalAmount": 2
+    },
+    {
+      "productId": "9deb99c7-0722-4dc5-b1c5-022ba3818ec5",
+      "totalAmount": 5132
+    },
+    {
+      "productId": "dbd0da8f-3af9-4b65-8242-57644dcbb9f1",
+      "totalAmount": 77
+    },
+    {
+      "productId": "5de03604-a670-444d-a4dc-4d315ac5c057",
+      "totalAmount": 63
+    },
+    {
+      "productId": "fedd6eb4-d382-4da7-8437-b6aacef5d567",
+      "totalAmount": 1
+    },
+    {
+      "productId": "62505e0f-31dd-420a-a59e-fd6a5ce3465a",
+      "totalAmount": 2
+    },
+    {
+      "productId": "a7f32e1b-4a9b-403b-8c23-abfab39321cf",
+      "totalAmount": 0
+    },
+    {
+      "productId": "3672432e-2a46-4800-ac81-111690329a8e",
+      "totalAmount": 6
+    },
+    {
+      "productId": "b5201bb5-d6c3-48a1-8335-26c4fa7e54aa",
+      "totalAmount": 9
+    },
+    {
+      "productId": "6655313d-4f9a-4ea5-8499-ccb59e2944c2",
+      "totalAmount": 10
+    },
+    {
+      "productId": "0a8ba975-bd5a-4e88-a204-78c54a655b3b",
+      "totalAmount": 412
+    },
+    {
+      "productId": "187e1935-e376-444d-9378-f87ebe251993",
+      "totalAmount": 632
+    },
+    {
+      "productId": "37c675f4-d69d-4c5c-9a1e-8db471f4ebb3",
+      "totalAmount": 5
+    },
+    {
+      "productId": "34b3bbaf-5455-44d5-9620-0c14a607ef38",
+      "totalAmount": 42
+    },
+    {
+      "productId": "91098f0e-fd5c-46cc-a184-2337d5b45675",
+      "totalAmount": 42
+    },
+    {
+      "productId": "0053dcfe-f9a0-40c1-b5c1-c4e8abd54160",
+      "totalAmount": 22
+    },
+    {
+      "productId": "5d647ad4-c4b4-421b-b7de-d8ac19b7efe6",
+      "totalAmount": 6
+    },
+    {
+      "productId": "f79e5187-4f97-44e4-b206-8ca06aea1d2e",
+      "totalAmount": 9
+    },
+    {
+      "productId": "396f00ae-31ee-4cb3-91e1-8149e7bfc0a8",
+      "totalAmount": 99
+    },
+    {
+      "productId": "0a0b64ce-cc17-446e-bdd5-2d7d939249fb",
+      "totalAmount": 101
+    },
+    {
+      "productId": "daad84a8-ed0c-48b8-afde-5ddd28f4313e",
+      "totalAmount": 5
+    },
+    {
+      "productId": "dc86c4fc-4455-43ef-a100-f679eda8020b",
+      "totalAmount": 7
+    },
+    {
+      "productId": "f2f4ff50-1c8f-4d22-bdf8-d35cb386e9db",
+      "totalAmount": 14
+    }
+  ],
+  "status": 200,
+  "statusText": "",
+  "headers": {
+    "content-length": "4645",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "config": {
+    "url": "https://bra2tww5y1.execute-api.eu-west-1.amazonaws.com/dev/products",
+    "method": "get",
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "x-api-key": "u6UTSMhGhL94acaOd4NGg7F2zGJVpD46DuB3PD64"
+    },
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1
+  },
+  "request": {}
+}
