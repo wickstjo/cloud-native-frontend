@@ -18,7 +18,8 @@ function Item({ id }) {
         set_local({
             price: state.products[id].price,
             amount: state.cart[id],
-            name: state.products[id].name
+            name: state.products[id].name,
+            available: state.products[id].available
         })
 
     // eslint-disable-next-line
@@ -26,16 +27,27 @@ function Item({ id }) {
 
     // INCREASE AMOUNT
     function increase() {
-        dispatch({
-            type: 'add-item',
-            payload: {
-                data: {
-                    id: id,
-                    amount: local.amount + 1
-                },
-                msg: 'amount increased'
-            }
-        })
+
+        // CHECK THAT AMOUNT IS AVAILABLE
+        if (local.amount < local.available) {
+            dispatch({
+                type: 'add-item',
+                payload: {
+                    data: {
+                        id: id,
+                        amount: local.amount + 1
+                    },
+                    msg: 'amount increased'
+                }
+            })
+
+        // IF NOT, SHOW ERROR
+        } else {
+            dispatch({
+                type: 'add-message',
+                payload: 'maximum capacity reached'
+            })
+        }
     }
 
     // DECREASE AMOUNT

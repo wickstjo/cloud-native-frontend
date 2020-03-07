@@ -4,7 +4,9 @@ import '../interface/css/prompt.scss';
 
 //import { products, inventory } from '../funcs/api';
 import { init } from '../funcs/localstorage';
-import mock from '../mock/products.json';
+
+import mock_inventory from '../mock/inventory.json';
+import mock_products from '../mock/products.json';
 
 // PROMPT CONTAINER
 function Init() {
@@ -15,32 +17,33 @@ function Init() {
    // LOAD ONCE
    useEffect(() => {
 
-      // CONTAINER
-      const container = {}
+      // CONTAINERS
+      const inventory_container = {}
+      const products_container = {}
 
-      // IF EVERYTHING WENT OK
-      if (mock.status === 200) {
+      // PARSE INVENTORY
+      mock_inventory.data.map(element =>
+         inventory_container[element.productId] = element.totalAmount
+      )
 
-         // LOOP THROUGH & PUSH TO CONTAINER
-         mock.data.forEach(element => {
-            container[element.productId] = {
-               name: element.productName,
-               description: element.productDesc,
-               price: element.productPrice.replace(',', '.')
-            }
-         })
-   
-         // SET PARSED PRODUCTS & CART DATA FROM LOCALSTORAGE
-         dispatch({
-            type: 'init',
-            payload: {
-               products: container,
-               cart: init()
-            }
-         })
-      
-      // OTHERWISE, SHOW ERROR
-      } else { console.log('PRODUCT API ERROR') }
+      // PARSE PRODUCTS
+      mock_products.data.map(element =>
+         products_container[element.productId] = {
+            name: element.productName,
+            description: element.productDesc,
+            price: element.productPrice.replace(',', '.'),
+            available: inventory_container[element.productId]
+         }
+      )
+
+      // SET PARSED PRODUCTS & CART DATA FROM LOCALSTORAGE
+      dispatch({
+         type: 'init',
+         payload: {
+            products: products_container,
+            cart: init()
+         }
+      })
 
       /* // FETCH ALL PRODUCTS
       products().then(response => {

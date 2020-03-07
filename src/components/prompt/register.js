@@ -49,7 +49,7 @@ function Register() {
                 type: 'login',
                 payload: 'foobar'
             })
-        } else { console.log('FILL IN FIELDS FIRST') }
+        }
     }
     
     return (
