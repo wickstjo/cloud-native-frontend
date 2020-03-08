@@ -13,7 +13,7 @@ describe("Render the shop page with a single product, ", () => {
     name: "Test product",
     price: 50,
     description: "This is a test description.",
-    available: 30
+    quantity: 30
   }
 
   const tree = (
