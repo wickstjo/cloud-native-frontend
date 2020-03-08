@@ -15,12 +15,26 @@ function Item({ id }) {
     
     // SET VALUES IN LOCAL STATE
     useEffect(() => {
-        set_local({
-            price: state.products[id].price,
-            amount: state.cart[id],
-            name: state.products[id].name,
-            available: state.products[id].available
-        })
+
+        // IF THE PRODUCT ID DOESNT EXIST, FORCEFULLY REMOVE IT FROM CART
+        if (state.products[id] === undefined) {
+            dispatch({
+                type: 'remove-item',
+                payload: {
+                    key: id,
+                    msg: 'item forcefully removed from cart'
+                }
+            })
+
+        // OTHERWISE, RENDER NORMALLY
+        } else {
+            set_local({
+                price: state.products[id].price,
+                amount: state.cart[id],
+                name: state.products[id].name,
+                quantity: state.products[id].quantity
+            })
+        }
 
     // eslint-disable-next-line
     }, [state.cart, Object.keys(state.cart).length])
@@ -29,7 +43,7 @@ function Item({ id }) {
     function increase() {
 
         // CHECK THAT AMOUNT IS AVAILABLE
-        if (local.amount < local.available) {
+        if (local.amount < local.quantity) {
             dispatch({
                 type: 'add-item',
                 payload: {

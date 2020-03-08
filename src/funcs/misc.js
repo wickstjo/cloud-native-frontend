@@ -50,9 +50,19 @@ function promisify(data, time) {
    })
 }
 
+// REMOVE KEY VALUE FROM OBJECT
+function remove({ key, obj }) {
+
+   // REMOVE THE KEY
+   delete obj[key]
+
+   return obj;
+}
+
 export {
    sleep,
    key_listener,
    check_validation,
-   promisify
+   promisify,
+   remove
 }

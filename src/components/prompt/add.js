@@ -3,6 +3,8 @@ import { Context } from "../context";
 import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
+import { add as mock_add } from '../../funcs/mock/products';
+
 import EventListener from 'react-event-listener';
 import Text from '../input/text';
 import Number from '../input/number';
@@ -29,11 +31,54 @@ function Add() {
         }
     })
 
-    // REGISTER FUNC
+    // ADD PRODUCT FUNC
     function execute() {
+        
+        // SHOW LOADING SCREEN
         dispatch({
-            type: 'login',
-            payload: 'foobar'
+            type: 'show-prompt',
+            payload: 'loading'
+        })
+
+        // ATTEMPT TO LOGIN
+        mock_add().then(result => {
+
+            // IF EVERYTHING WENT WELL
+            if (result.status === 200) {
+
+                // IF RESPONSE IS TRUE
+                if (result.data.success) {
+
+                    // REMOVE PRODUCT, HIDE PROMPT & SHOW MESSAGE
+                    dispatch({
+                        type: 'add-product',
+                        payload: {
+                            id: result.data.id,
+                            data: {
+                                name: local.name.value,
+                                description: local.description.value,
+                                price: local.price.value,
+                                quantity: 0
+                            },
+                            msg: 'item added to database'
+                        }
+                    })
+
+                // OTHERWISE, SHOW ERROR
+                } else {
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'could not add item, please try again'
+                    })
+                }
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'api error when removing item'
+                })
+            }
         })
     }
     

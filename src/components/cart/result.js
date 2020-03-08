@@ -13,7 +13,9 @@ function Result({ cart, products }) {
 
         // LOOP THROUGH EACH ITEM
         Object.keys(cart).map(item =>
-            price += cart[item] * products[item].price
+
+            // IF THE PRODUCT EXISTS, ADD TO SUM
+            products[item] !== undefined ? price += cart[item] * products[item].price : null
         )
 
         // SET IN LOCAL STATE
