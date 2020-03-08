@@ -5,10 +5,11 @@ import '../interface/css/cart.scss';
 
 import Item from "../components/cart/item";
 import Result from "../components/cart/result";
+import Order from "../components/cart/order";
 
 function Cart() {
    
-   // GLOBAL CONTEXT
+   // GLOBAL STATE
    const { state } = useContext(Context);
 
    return (
@@ -18,8 +19,14 @@ function Cart() {
                keys={ Object.keys(state.cart) }
                cart={ state.cart }
                products={ state.products }
+               logged={ state.logged }
+               user={ state.user }
             />
          </div>
+         <Order
+            logged={ state.logged }
+            user={ state.user }
+         />
       </div>
    )
 }

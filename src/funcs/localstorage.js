@@ -53,8 +53,15 @@ function remove({ key, cart }) {
     return cart;
 }
 
+// RESET CART
+function reset() {
+    save({})
+    return {}
+}
+
 export {
     init,
     update,
-    remove
+    remove,
+    reset
 }

@@ -1,4 +1,4 @@
-import { update, remove } from '../funcs/localstorage';
+import { update, remove, reset } from '../funcs/localstorage';
 
 // DEFUALT VALUES
 const values = {
@@ -99,6 +99,15 @@ function reducer(state, { type, payload }) {
          messages: [
             ...state.messages,
             payload.msg
+         ]
+      }}
+
+      case 'reset-cart': { return {
+         ...state,
+         cart: reset(),
+         messages: [
+            ...state.messages,
+            payload
          ]
       }}
 

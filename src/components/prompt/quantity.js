@@ -4,32 +4,34 @@ import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
 import EventListener from 'react-event-listener';
-import Email from '../input/email';
-import Password from '../input/password';
+import Number from '../input/number';
 import Button from '../input/button';
 
-function Login() {
+function Quantity() {
     
     // GLOBAL CONTEXT
     const { state, dispatch } = useContext(Context);
     
     // LOCAL INPUT STATE
     const [local, set_local] = useReducer(reducer, {
-        email: {
-            value: '',
-            status: null
-        },
-        password: {
+        amount: {
             value: '',
             status: null
         }
     })
 
-    // LOGIN FUNC
+    // INCREASE QUANTITY
     function execute() {
+
+        // HIDE PROMPT
         dispatch({
-            type: 'login',
-            payload: 'foobar'
+            type: 'hide-prompt',
+        })
+
+        // SHOW MESSAGE
+        dispatch({
+            type: 'add-message',
+            payload: 'quantity increased'
         })
     }
     
@@ -41,26 +43,20 @@ function Login() {
                     key_listener(state, dispatch, event)
                 }}
             />
-            <div id={ 'header' }>Login</div>
+            <div id={ 'header' }>Increase Quantity</div>
             <div id={ 'content' }>
-                <Email
-                    placeholder={ 'Email' }
-                    value={ local.email.value }
+                <Number
+                    placeholder={ 'Increase by amount' }
+                    value={ local.amount.value }
+                    range={[ 1, 100 ]}
                     update={ set_local }
-                    id={ 'email' }
-                />
-                <Password
-                    placeholder={ 'Password' }
-                    value={ local.password.value }
-                    update={ set_local }
-                    id={ 'password' }
+                    id={ 'amount' }
                 />
                 <Button
-                    header={ 'Login' }
+                    header={ 'Execute' }
                     func={ execute }
                     require={[
-                        local.email.status,
-                        local.password.status
+                        local.amount.status
                     ]}
                 />
             </div>
@@ -68,4 +64,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Quantity;

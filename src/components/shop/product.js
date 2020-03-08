@@ -1,5 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Context } from "../../components/context";
+
+import Button from './button'
+import Action from './action'
 
 function Product({ details, id }) {
 
@@ -22,7 +25,7 @@ function Product({ details, id }) {
     }
 
     // REMOVE ITEM FROM CART
-    function remove() {
+    function cart_remove() {
         dispatch({
             type: 'remove-item',
             payload: {
@@ -32,12 +35,28 @@ function Product({ details, id }) {
         })
     }
 
+    // SHOW QUANTITY PROMPT
+    function quantity() {
+        dispatch({
+            type: 'show-prompt',
+            payload: 'quantity'
+        })
+    }
+
+    // REMOVE PRODUCT FROM DB
+    function db_remove() {
+        dispatch({
+            type: 'add-message',
+            payload: 'item removed from database'
+        })
+    }
+
     return (
         <div className={ 'product' }>
             <div>
                 <div id={ 'header' }>
                     <div id={ 'price' }>{ details.price }€</div>
-                    <div id={ 'name' }>{ details.name }</div>
+                    <div id={ 'name' }>{ details.name } | { details.available }</div>
                 </div>
                 <div id={ 'description' }>{ details.description }</div>
             </div>
@@ -45,27 +64,23 @@ function Product({ details, id }) {
                 <Button
                     exists={ state.cart[id] }
                     add={ add }
-                    remove={ remove }
+                    remove={ cart_remove }
                 />
+                { state.logged ? (
+                    <Fragment>
+                        <Action
+                            header={ 'QUA' }
+                            func={ quantity }
+                        />
+                        <Action
+                            header={ 'REM' }
+                            func={ db_remove }
+                        />
+                    </Fragment>
+                ): null }
             </div>
         </div>
     )
-}
-
-// CHANGE BUTTON IF ITEM EXISTS IN CART
-function Button({ exists, add, remove }) {
-    switch(exists) {
-        
-        // ADD BUTTON
-        case undefined: { return (
-            <div id={ 'add' } onClick={ add }>ADD</div>
-        )}
-
-        // REMOVE BUTTON
-        default:  { return (
-            <div id={ 'remove' } onClick={ remove }>DEL</div>
-        )}
-    }
 }
 
 export default Product;

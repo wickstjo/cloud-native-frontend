@@ -6,6 +6,8 @@ import '../interface/css/input.scss';
 
 import Register from './prompt/register';
 import Login from './prompt/login';
+import Quantity from './prompt/quantity';
+import Add from './prompt/add';
 
 // PROMPT CONTAINER
 function Prompt() {
@@ -47,25 +49,35 @@ function Prompt() {
 function Content({ type }) {
    switch(type) {
 
-        // LOADING SCREEN
-        case 'loading': {
-            return <div className="lds-dual-ring" />
-        }
+      // LOADING SCREEN
+      case 'loading': {
+         return <div className="lds-dual-ring" />
+      }
 
-        // REGISER USER
-        case 'register': {
-            return <Register />
-        }
+      // REGISER USER
+      case 'register': {
+         return <Register />
+      }
 
-        // LOGIN USER
-        case 'login': {
-            return <Login />
-        }
+      // LOGIN USER
+      case 'login': {
+         return <Login />
+      }
 
-        // FALLBACK
-        default: {
-            return <div>PROMPT TYPE ERROR</div>
-        }
+      // CHANGE QUANTITY OF ITEM IN DB
+      case 'quantity': {
+         return <Quantity />
+      }
+
+      // ADD ITEM TO DB
+      case 'add': {
+         return <Add />
+      }
+
+      // FALLBACK
+      default: {
+         return <div>PROMPT TYPE ERROR</div>
+      }
    }
 }
 

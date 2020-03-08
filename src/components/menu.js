@@ -26,6 +26,14 @@ function Menu() {
         })
     }
 
+    // LOGIN PROMPT
+    function add() {
+        dispatch({
+            type: 'show-prompt',
+            payload: 'add'
+        })
+    }
+
     // LOGOUT
     function logout() {
         dispatch({ type: 'logout' })
@@ -47,13 +55,25 @@ function Menu() {
                 <div>
                     { state.logged ? (
                         <Fragment>
-                            <MenuItem header={ 'Manage' } link={ '/manage' } />
-                            <MenuTrigger header={ 'Logout (' + state.user + ')' } func={ logout } />
+                            <MenuTrigger
+                                header={ 'Add Product' }
+                                func={ add }
+                            />
+                            <MenuTrigger
+                                header={ 'Logout (' + state.user + ')' }
+                                func={ logout }
+                            />
                         </Fragment>
                     ):(
                         <Fragment>
-                            <MenuTrigger header={ 'Register' } func={ register } />
-                            <MenuTrigger header={ 'Login' } func={ login } />
+                            <MenuTrigger
+                                header={ 'Register' }
+                                func={ register }
+                            />
+                            <MenuTrigger
+                                header={ 'Login' }
+                                func={ login }
+                            />
                         </Fragment>
                     )}
                 </div>

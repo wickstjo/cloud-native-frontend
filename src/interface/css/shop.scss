@@ -10,7 +10,6 @@
 
       > div:nth-child(1) {
          flex: 1;
-         margin-right: 2px;
 
          #header {
             background: rgba(94, 125, 192, 0.507);
@@ -38,9 +37,9 @@
       }
 
       > div:nth-child(2) {
-         width: 63px;
+         display: flex;
 
-         #add, #remove {
+         #add, #remove, #action {
             background: rgba(94, 207, 94, 0.342);
             display: flex;
             align-items: center;
@@ -49,10 +48,16 @@
             width: 100%;
             cursor: pointer;
             transition: 0.2s;
+            width: 63px;
+            margin-left: 2px;
          }
 
          #remove {
             background: rgba(226, 84, 84, 0.418);
+         }
+
+         #action {
+            background: rgba(78, 255, 246, 0.247);
          }
 
          #add:hover {
@@ -61,6 +66,10 @@
 
          #remove:hover {
             background: rgba(226, 84, 84, 0.486);
+         }
+
+         #action:hover {
+            background: rgba(78, 255, 246, 0.301);
          }
       }
    }

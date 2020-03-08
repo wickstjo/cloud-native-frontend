@@ -4,28 +4,32 @@ import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
 import EventListener from 'react-event-listener';
-import Email from '../input/email';
-import Password from '../input/password';
+import Text from '../input/text';
+import Number from '../input/number';
 import Button from '../input/button';
 
-function Login() {
-    
+function Add() {
+
     // GLOBAL CONTEXT
     const { state, dispatch } = useContext(Context);
-    
+
     // LOCAL INPUT STATE
     const [local, set_local] = useReducer(reducer, {
-        email: {
+        name: {
             value: '',
             status: null
         },
-        password: {
+        description: {
+            value: '',
+            status: null
+        },
+        price: {
             value: '',
             status: null
         }
     })
 
-    // LOGIN FUNC
+    // REGISTER FUNC
     function execute() {
         dispatch({
             type: 'login',
@@ -41,26 +45,36 @@ function Login() {
                     key_listener(state, dispatch, event)
                 }}
             />
-            <div id={ 'header' }>Login</div>
+            <div id={ 'header' }>Add Product</div>
             <div id={ 'content' }>
-                <Email
-                    placeholder={ 'Email' }
-                    value={ local.email.value }
+                <Text
+                    placeholder={ 'Name' }
+                    value={ local.name.value }
+                    range={[ 2, 20 ]}
                     update={ set_local }
-                    id={ 'email' }
+                    id={ 'name' }
                 />
-                <Password
-                    placeholder={ 'Password' }
-                    value={ local.password.value }
+                <Text
+                    placeholder={ 'Description' }
+                    value={ local.description.value }
+                    range={[ 2, 50 ]}
                     update={ set_local }
-                    id={ 'password' }
+                    id={ 'description' }
+                />
+                <Number
+                    placeholder={ 'Price' }
+                    value={ local.price.value }
+                    range={[ 1, 500 ]}
+                    update={ set_local }
+                    id={ 'price' }
                 />
                 <Button
-                    header={ 'Login' }
+                    header={ 'Execute' }
                     func={ execute }
                     require={[
-                        local.email.status,
-                        local.password.status
+                        local.name.status,
+                        local.description.status,
+                        local.price.status
                     ]}
                 />
             </div>
@@ -68,4 +82,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Add;
