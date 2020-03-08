@@ -3,6 +3,8 @@ import { Context } from "../context";
 import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
+import { modify as mock_modify } from '../../funcs/mock/inventory';
+
 import EventListener from 'react-event-listener';
 import Number from '../input/number';
 import Button from '../input/button';
@@ -23,15 +25,47 @@ function Quantity() {
     // INCREASE QUANTITY
     function execute() {
 
-        // HIDE PROMPT
+        // SHOW LOADING SCREEN
         dispatch({
-            type: 'hide-prompt',
+            type: 'show-prompt',
+            payload: 'loading'
         })
 
-        // SHOW MESSAGE
-        dispatch({
-            type: 'add-message',
-            payload: 'quantity increased'
+        // ATTEMPT TO LOGIN
+        mock_modify().then(result => {
+
+            // IF EVERYTHING WENT WELL
+            if (result.status === 200) {
+
+                // IF RESPONSE IS TRUE
+                if (result.data) {
+
+                    // HIDE LOADING SCREEN
+                    dispatch({
+                        type: 'hide-prompt'
+                    })
+
+                    // SHOW MESSAGE
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'quantity increased'
+                    })
+
+                // OTHERWISE, SHOW ERROR
+                } else {
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'could not remove item, please try again'
+                    })
+                }
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'api error when removing item'
+                })
+            }
         })
     }
     

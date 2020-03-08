@@ -1,6 +1,8 @@
 import React, { useContext, Fragment } from 'react';
 import { Context } from "../../components/context";
 
+import { remove as mock_remove } from '../../funcs/mock/products';
+
 import Button from './button'
 import Action from './action'
 
@@ -45,9 +47,48 @@ function Product({ details, id }) {
 
     // REMOVE PRODUCT FROM DB
     function db_remove() {
+
+        // SHOW LOADING SCREEN
         dispatch({
-            type: 'add-message',
-            payload: 'item removed from database'
+            type: 'show-prompt',
+            payload: 'loading'
+        })
+
+        // ATTEMPT TO LOGIN
+        mock_remove().then(result => {
+
+            // IF EVERYTHING WENT WELL
+            if (result.status === 200) {
+
+                // IF RESPONSE IS TRUE
+                if (result.data) {
+
+                    // HIDE LOADING SCREEN
+                    dispatch({
+                        type: 'hide-prompt'
+                    })
+
+                    // SHOW MESSAGE
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'item removed from database'
+                    })
+
+                // OTHERWISE, SHOW ERROR
+                } else {
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'could not remove item, please try again'
+                    })
+                }
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'api error when removing item'
+                })
+            }
         })
     }
 

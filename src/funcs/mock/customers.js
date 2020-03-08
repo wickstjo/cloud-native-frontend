@@ -1,5 +1,5 @@
-import login_data from './data/login';
-import register_data from './data/register';
+import login_data from './data/true';
+import register_data from './data/true';
 import { promisify } from '../misc';
 
 function login() {

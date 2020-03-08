@@ -1,4 +1,4 @@
-import delivery from './data/delivery';
+import delivery from './data/true';
 import { promisify } from '../misc';
 
 // FETCH ALL PRODUCTS
