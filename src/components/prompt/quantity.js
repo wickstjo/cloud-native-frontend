@@ -40,15 +40,14 @@ function Quantity() {
                 // IF RESPONSE IS TRUE
                 if (result.data) {
 
-                    // HIDE LOADING SCREEN
+                    // FOO
                     dispatch({
-                        type: 'hide-prompt'
-                    })
-
-                    // SHOW MESSAGE
-                    dispatch({
-                        type: 'add-message',
-                        payload: 'quantity increased'
+                        type: 'modify-quantity',
+                        payload: {
+                            id: state.recent,
+                            amount: local.amount.value,
+                            msg: 'product quantity changed'
+                        }
                     })
 
                 // OTHERWISE, SHOW ERROR
@@ -77,7 +76,7 @@ function Quantity() {
                     key_listener(state, dispatch, event)
                 }}
             />
-            <div id={ 'header' }>Increase Quantity</div>
+            <div id={ 'header' }>Modify Quantity</div>
             <div id={ 'content' }>
                 <Number
                     placeholder={ 'Increase by amount' }

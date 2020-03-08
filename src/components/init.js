@@ -45,7 +45,7 @@ function Init() {
                   name: element.productName,
                   description: element.productDesc,
                   price: element.productPrice.replace(',', '.'),
-                  available: inventory_container[element.productId]
+                  quantity: inventory_container[element.productId]
                }
             )
 

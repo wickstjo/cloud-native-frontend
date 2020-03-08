@@ -43,6 +43,12 @@ function Product({ details, id }) {
             type: 'show-prompt',
             payload: 'quantity'
         })
+
+        // SAVE PRODUCT ID
+        dispatch({
+            type: 'recent',
+            payload: id
+        })
     }
 
     // REMOVE PRODUCT FROM DB
@@ -63,15 +69,13 @@ function Product({ details, id }) {
                 // IF RESPONSE IS TRUE
                 if (result.data) {
 
-                    // HIDE LOADING SCREEN
+                    // REMOVE PRODUCT, HIDE PROMPT & SHOW MESSAGE
                     dispatch({
-                        type: 'hide-prompt'
-                    })
-
-                    // SHOW MESSAGE
-                    dispatch({
-                        type: 'add-message',
-                        payload: 'item removed from database'
+                        type: 'remove-product',
+                        payload: {
+                            key: id,
+                            msg: 'item removed from database'
+                        }
                     })
 
                 // OTHERWISE, SHOW ERROR
@@ -97,16 +101,18 @@ function Product({ details, id }) {
             <div>
                 <div id={ 'header' }>
                     <div id={ 'price' }>{ details.price }€</div>
-                    <div id={ 'name' }>{ details.name } | { details.available }</div>
+                    <div id={ 'name' }>{ details.name } | { details.quantity }</div>
                 </div>
                 <div id={ 'description' }>{ details.description }</div>
             </div>
             <div>
-                <Button
-                    exists={ state.cart[id] }
-                    add={ add }
-                    remove={ cart_remove }
-                />
+                { details.quantity > 0 ? (
+                    <Button
+                        exists={ state.cart[id] }
+                        add={ add }
+                        remove={ cart_remove }
+                    />
+                ): null }
                 { state.logged ? (
                     <Fragment>
                         <Action
