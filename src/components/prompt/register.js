@@ -1,7 +1,9 @@
 import React, { Fragment, useContext, useReducer } from 'react';
 import { Context } from "../context";
 import reducer from '../../states/input';
+
 import { key_listener } from '../../funcs/misc';
+import { register as mock_register } from '../../funcs/mock/customers';
 
 import EventListener from 'react-event-listener';
 import Email from '../input/email';
@@ -44,9 +46,43 @@ function Register() {
 
     // REGISTER FUNC
     function execute() {
+
+        // SHOW LOADING SCREEN
         dispatch({
-            type: 'login',
-            payload: 'foobar'
+            type: 'show-prompt',
+            payload: 'loading'
+        })
+
+        // ATTEMPT TO REGISTER
+        mock_register().then(result => {
+
+            // IF EVERYTHING WENT WELL
+            if (result.status === 200) {
+
+                // IF RESPONSE IS TRUE
+                if (result.data) {
+
+                    // LOG IN & HIDE PROMPT
+                    dispatch({
+                        type: 'login',
+                        payload: local.email.value
+                    })
+
+                // OTHERWISE, SHOW ERROR
+                } else {
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'combination does not exist'
+                    })
+                }
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'api error when logging in'
+                })
+            }
         })
     }
     

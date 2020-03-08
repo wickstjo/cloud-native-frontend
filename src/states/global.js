@@ -4,10 +4,7 @@ import { update, remove, reset } from '../funcs/localstorage';
 const values = {
 
    // PRODUCT DATA
-   products: {
-      array: [],
-      object: {}
-   },
+   products: {},
 
    // LOGIN STUFF
    logged: false,
@@ -15,8 +12,8 @@ const values = {
 
    // PROMPT STUFF
    prompt: {
-      visible: false,
-      type: null
+      visible: true,
+      type: 'loading'
    },
 
    // SHOPPING CART
@@ -33,7 +30,11 @@ function reducer(state, { type, payload }) {
       case 'init': { return {
          ...state,
          products: payload.products,
-         cart: payload.cart
+         cart: payload.cart,
+         prompt: {
+            visible: false,
+            type: null
+         }
       }}
 
       // SHOW SPECIFIC PROMPT
@@ -108,7 +109,11 @@ function reducer(state, { type, payload }) {
          messages: [
             ...state.messages,
             payload
-         ]
+         ],
+         prompt: {
+            visible: false,
+            type: null
+         }
       }}
 
       // ADD MESSAGE
@@ -119,7 +124,7 @@ function reducer(state, { type, payload }) {
             payload
          ]
       }}
-
+      
       // FALLBACK
       default: {
          console.log('CONTEXT REDUCER TYPE NOT FOUND');

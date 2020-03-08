@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from "../context";
 
+import { submit as mock_submit } from '../../funcs/mock/delivery';
+
 function Order() {
 
     // GLOBAL STATE
@@ -12,6 +14,7 @@ function Order() {
         type: ''
     })
 
+    // BUTTON EFFECT
     useEffect(() => {
         if (state.logged) {
             set_local({
@@ -26,26 +29,75 @@ function Order() {
         }
     }, [state.logged])
 
+    // PLACE ORDER
     function execute() {
         if (state.logged) {
 
-            // ADD MESSAGE
+            // SHOW LOADING SCREEN
             dispatch({
-                type: 'reset-cart',
-                payload: 'order placed'
+                type: 'show-prompt',
+                payload: 'loading'
+            })
+
+            // SUBMIT ORDER
+            mock_submit().then(result => {
+
+                // IF EVERYTHING WENT WELL
+                if (result.status === 200) {
+
+                    // IF RESPONSE IS TRUE
+                    if (result.data) {
+
+                        // RESET THE CART, STOP LOADING & SHOW MESSAGE
+                        dispatch({
+                            type: 'reset-cart',
+                            payload: 'order placed'
+                        })
+
+                    // OTHERWISE, SHOW ERROR
+                    } else {
+                        dispatch({
+                            type: 'add-message',
+                            payload: 'something went wrong, please try again'
+                        })
+                    }
+
+                    // RESET THE CART, STOP LOADING & SHOW MESSAGE
+                    dispatch({
+                        type: 'reset-cart',
+                        payload: 'order placed'
+                    })
+
+                // OTHERWISE, SHOW ERROR
+                } else {
+                    dispatch({
+                        type: 'add-message',
+                        payload: 'api error when submitting'
+                    })
+                }
             })
         }
     }
     
-    return (
-        <div id={ 'order' }>
-            <Button
-                header={ local.header }
-                type={ local.type }
-                func={ execute }
-            />
-        </div>
-    )
+    // SWITCH CONTENT
+    switch(Object.keys(state.cart).length) {
+
+        // NO ITEMS IN CART
+        case 0: {
+            return null
+        }
+
+        // SOME ITEMS IN CART
+        default: { return (
+            <div id={ 'order' }>
+                <Button
+                    header={ local.header }
+                    type={ local.type }
+                    func={ execute }
+                />
+            </div>
+        )}
+    }
 }
 
 function Button({ header, type, func }) { return (

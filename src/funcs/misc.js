@@ -12,7 +12,6 @@ function key_listener(state, dispatch, event) {
          break;
 
          default:
-            console.log('KEY LISTENER ERROR')
       }
    }
 }
@@ -43,8 +42,17 @@ function check_validation(values) {
    } else { return true; }
 }
 
+function promisify(data, time) {
+   return new Promise(resolve => {
+      sleep(time * 1000).then(() => {
+         resolve(data)
+      })
+   })
+}
+
 export {
    sleep,
    key_listener,
-   check_validation
+   check_validation,
+   promisify
 }
