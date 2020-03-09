@@ -56,6 +56,7 @@ When a new commit is pushed to the master branch, AWS Amplify automatically take
 |   |_  pages/          # Pages
 |   |
 |   |_  states/         # States
-|
+|   |
+|   |_  __tests__/      # Tests
 ```
 
