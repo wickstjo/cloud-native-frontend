@@ -1,6 +1,8 @@
 # Cloud-native-frontend
  
  This application is part of a course called Cloud Native Apps. It is a React frontend application that makes use of the other teams API microservices to create a functional service, a simple hat store.
+ 
+ https://master.dd1saovtaf1ro.amplifyapp.com/
 
  ## APIs
 
