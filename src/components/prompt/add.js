@@ -3,7 +3,8 @@ import { Context } from "../context";
 import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
-import { add as mock_add } from '../../funcs/mock/products';
+import { add } from '../../funcs/api/products';
+//import { add as mock_add } from '../../funcs/mock/products';
 
 import EventListener from 'react-event-listener';
 import Text from '../input/text';
@@ -31,8 +32,61 @@ function Add() {
         }
     })
 
-    // ADD PRODUCT FUNC
+    // ADD PRODUCT
     function execute() {
+
+        // SHOW LOADING SCREEN
+        dispatch({
+            type: 'show-prompt',
+            payload: 'loading'
+        })
+
+        // ATTEMPT TO ADD PRODUCT
+        add({
+            name: local.name.value,
+            description: local.description.value,
+            price: local.price.value
+
+        // IF EVERYTHING WENT WELL
+        }).then(result => {
+            
+            // IF EVERYTHING WENT WELL
+            if (result.status === 201) {
+
+                // ADD PRODUCT, HIDE PROMPT & SHOW MESSAGE
+                dispatch({
+                    type: 'add-product',
+                    payload: {
+                        id: result.data.id,
+                        data: {
+                            name: local.name.value,
+                            description: local.description.value,
+                            price: local.price.value,
+                            quantity: 0
+                        },
+                        msg: 'item added to database'
+                    }
+                })
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'could not add item, please try again (' + result.status + ')'
+                })
+            }
+
+        // OTHERWISE, SHOW SERVER ERROR
+        }).catch(() => {
+            dispatch({
+                type: 'add-message',
+                payload: 'api error when adding item'
+            })
+        })
+    }
+
+    // MOCK CALL
+    /* function mock() {
         
         // SHOW LOADING SCREEN
         dispatch({
@@ -49,7 +103,7 @@ function Add() {
                 // IF RESPONSE IS TRUE
                 if (result.data.success) {
 
-                    // REMOVE PRODUCT, HIDE PROMPT & SHOW MESSAGE
+                    // ADD PRODUCT, HIDE PROMPT & SHOW MESSAGE
                     dispatch({
                         type: 'add-product',
                         payload: {
@@ -80,7 +134,7 @@ function Add() {
                 })
             }
         })
-    }
+    } */
     
     return (
         <Fragment>

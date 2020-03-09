@@ -17,7 +17,7 @@ function Order() {
 
     // BUTTON EFFECT
     useEffect(() => {
-        if (state.logged) {
+        if (state.session.active) {
             set_local({
                 header: 'Place an Order',
                 type: 'active'
@@ -28,15 +28,15 @@ function Order() {
                 type: 'inactive'
             })
         }
-    }, [state.logged])
+    }, [state.session.active])
 
     // PLACE ORDER
     function execute() {
-        if (state.logged) {
+        if (state.session.active) {
 
             // ATTEMPT TO LOGIN
             submit({
-                user: state.user,
+                user: state.session.user,
                 order: state.cart
 
             // IF EVERYTHING WENT FINE
@@ -72,7 +72,7 @@ function Order() {
 
     // MOCK CALL
     /* function mock() {
-        if (state.logged) {
+        if (state.session.active) {
 
             // SHOW LOADING SCREEN
             dispatch({

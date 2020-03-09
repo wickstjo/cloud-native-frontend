@@ -2,9 +2,9 @@ import { useContext, useEffect } from 'react';
 import { Context } from "./context";
 import '../interface/css/prompt.scss';
 
-// import { everything as products } from '../funcs/api/products';
+import { everything as products } from '../funcs/api/products';
 // import { everything as inventory } from '../funcs/api/inventory';
-import { everything as products } from '../funcs/mock/products';
+//import { everything as products } from '../funcs/mock/products';
 import { everything as inventory } from '../funcs/mock/inventory';
 
 import { init as init_localstorage } from '../funcs/localstorage';
@@ -45,16 +45,22 @@ function Init() {
                   name: element.productName,
                   description: element.productDesc,
                   price: element.productPrice.replace(',', '.'),
-                  quantity: inventory_container[element.productId]
+
+                  // DEFAULT TO ZERO IF QUANTITY CANNOT BE FOUND
+                  quantity: inventory_container[element.productId] ? inventory_container[element.productId] : 0
                }
             )
+
+            // INITIALIZE LOCALSTORAGE
+            const { cart, session } = init_localstorage();
 
             // SET PARSED PRODUCTS & CART DATA FROM LOCALSTORAGE
             dispatch({
                type: 'init',
                payload: {
                   products: products_container,
-                  cart: init_localstorage()
+                  cart: cart,
+                  session: session
                }
             })
 

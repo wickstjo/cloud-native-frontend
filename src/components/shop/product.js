@@ -1,7 +1,8 @@
 import React, { useContext, Fragment } from 'react';
 import { Context } from "../../components/context";
 
-import { remove as mock_remove } from '../../funcs/mock/products';
+import { remove } from '../../funcs/api/products';
+//import { remove as mock_remove } from '../../funcs/mock/products';
 
 import Button from './button'
 import Action from './action'
@@ -22,7 +23,6 @@ function Product({ details, id }) {
                 },
                 msg: 'item added to cart'
             }
-            
         })
     }
 
@@ -53,6 +53,47 @@ function Product({ details, id }) {
 
     // REMOVE PRODUCT FROM DB
     function db_remove() {
+
+        // SHOW LOADING SCREEN
+        dispatch({
+            type: 'show-prompt',
+            payload: 'loading'
+        })
+
+        // ATTEMPT TO LOGIN
+        remove({ product: id }).then(result => {
+            
+            // IF EVERYTHING WENT WELL
+            if (result.status === 204) {
+
+                // REMOVE PRODUCT, HIDE PROMPT & SHOW MESSAGE
+                dispatch({
+                    type: 'remove-product',
+                    payload: {
+                        key: id,
+                        msg: 'item removed from database'
+                    }
+                })
+
+            // OTHERWISE, SHOW ERROR
+            } else {
+                dispatch({
+                    type: 'add-message',
+                    payload: 'could not remove item, please try again'
+                })
+            }
+
+        // OTHERWISE, SHOW 404 ERROR
+        }).catch(() => {
+            dispatch({
+                type: 'add-message',
+                payload: 'api error when removing item'
+            })
+        })
+    }
+
+    // MOCK CALL
+    /* function mock() {
 
         // SHOW LOADING SCREEN
         dispatch({
@@ -95,13 +136,13 @@ function Product({ details, id }) {
             }
         })
     }
-
+ */
     return (
         <div className={ 'product' }>
             <div>
                 <div id={ 'header' }>
                     <div id={ 'price' }>{ details.price }€</div>
-                    <div id={ 'name' }>{ details.name } | { details.quantity }</div>
+                    <div id={ 'name' }>{ details.name } ({ details.quantity })</div>
                 </div>
                 <div id={ 'description' }>{ details.description }</div>
             </div>
@@ -113,7 +154,7 @@ function Product({ details, id }) {
                         remove={ cart_remove }
                     />
                 ): null }
-                { state.logged ? (
+                { state.session.active ? (
                     <Fragment>
                         <Action
                             header={ 'QUA' }

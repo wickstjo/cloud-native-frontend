@@ -22,8 +22,12 @@ function Quantity() {
         }
     })
 
+    /* function execute() {
+        
+    } */
+
     // INCREASE QUANTITY
-    function execute() {
+    function mock() {
 
         // SHOW LOADING SCREEN
         dispatch({
@@ -87,7 +91,7 @@ function Quantity() {
                 />
                 <Button
                     header={ 'Execute' }
-                    func={ execute }
+                    func={ mock }
                     require={[
                         local.amount.status
                     ]}

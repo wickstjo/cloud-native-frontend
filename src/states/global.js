@@ -1,4 +1,4 @@
-import { update, remove as remove_item, reset } from '../funcs/localstorage';
+import { update, remove as remove_item, reset, save_session, remove_session } from '../funcs/localstorage';
 import { remove as remove_product } from '../funcs/misc';
 
 // DEFUALT VALUES
@@ -8,9 +8,11 @@ const values = {
    products: {},
    recent: '',
 
-   // LOGIN STUFF
-   logged: false,
-   user: null,
+   // LOGIN SESSION
+   session: {
+      active: false,
+      user: null
+   },
 
    // PROMPT STUFF
    prompt: {
@@ -33,6 +35,7 @@ function reducer(state, { type, payload }) {
          ...state,
          products: payload.products,
          cart: payload.cart,
+         session: payload.session,
          prompt: {
             visible: false,
             type: null
@@ -60,8 +63,10 @@ function reducer(state, { type, payload }) {
       // LOGIN
       case 'login': { return {
          ...state,
-         logged: true,
-         user: payload.user,
+         session: {
+            active: true,
+            user: save_session(payload.user),
+         },
          prompt: {
             ...state.prompt,
             visible: false
@@ -75,8 +80,10 @@ function reducer(state, { type, payload }) {
       // LOGOUT
       case 'logout': { return {
          ...state,
-         logged: false,
-         user: null,
+         session: {
+            active: false,
+            user: remove_session(),
+         },
          prompt: {
             ...state.prompt,
             visible: false

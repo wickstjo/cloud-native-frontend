@@ -53,14 +53,14 @@ function Menu() {
                     />
                 </div>
                 <div>
-                    { state.logged ? (
+                    { state.session.active ? (
                         <Fragment>
                             <MenuTrigger
                                 header={ 'Add Product' }
                                 func={ add }
                             />
                             <MenuTrigger
-                                header={ 'Logout (' + state.user + ')' }
+                                header={ 'Logout (' + state.session.user + ')' }
                                 func={ logout }
                             />
                         </Fragment>
