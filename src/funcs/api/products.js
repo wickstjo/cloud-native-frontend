@@ -1,10 +1,10 @@
 import axios from 'axios';
-import keys from '../../keys.json';
+import { products as products_key } from '../keys.js';
 
 // API CONFIG
 const config = {
     headers: {
-        "x-api-key": keys.products
+        "x-api-key": products_key
     }
 }
 

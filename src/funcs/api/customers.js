@@ -1,11 +1,11 @@
 import axios from 'axios';
 import hash from 'sha256';
-import keys from '../../keys.json';
+import { customers as customers_key } from '../keys.js';
 
 // API CONFIG
 const config = {
     headers: {
-        "x-api-key": keys.customers
+        "x-api-key": customers_key
     }
 }
 

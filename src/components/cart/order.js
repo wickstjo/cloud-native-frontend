@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from "../context";
 
-import { submit } from '../../funcs/api/delivery';
-//import { submit as mock_submit } from '../../funcs/mock/delivery';
+//import { submit } from '../../funcs/api/delivery';
+import { submit as mock_submit } from '../../funcs/mock/delivery';
 
 function Order() {
 
@@ -31,47 +31,53 @@ function Order() {
     }, [state.session.active])
 
     // PLACE ORDER
-    function execute() {
-        if (state.session.active) {
+    // function execute() {
+    //     if (state.session.active) {
 
-            // ATTEMPT TO LOGIN
-            submit({
-                user: state.session.user,
-                order: state.cart
+    //         // SHOW LOADING SCREEN
+    //         dispatch({
+    //             type: 'show-prompt',
+    //             payload: 'loading'
+    //         })
 
-            // IF EVERYTHING WENT FINE
-            }).then(result => {
-                console.log(result)
+    //         // ATTEMPT TO LOGIN
+    //         submit({
+    //             user: state.session.user,
+    //             order: state.cart
 
-                // IF EVERYTHING WENT WELL
-                if (result.status === 200 && result.data) {
+    //         // IF EVERYTHING WENT FINE
+    //         }).then(result => {
+    //             console.log(result)
 
-                    // RESET THE CART, STOP LOADING & SHOW MESSAGE
-                    dispatch({
-                        type: 'reset-cart',
-                        payload: 'order placed'
-                    })
-                }
+    //             // IF EVERYTHING WENT WELL
+    //             if (result.status === 200 && result.data) {
 
-            // OTHERWISE, PROCESS ERROR
-            }).catch(() => {
+    //                 // RESET THE CART, STOP LOADING & SHOW MESSAGE
+    //                 dispatch({
+    //                     type: 'reset-cart',
+    //                     payload: 'order placed'
+    //                 })
+    //             }
 
-                // HIDE LOADING SCREEN
-                dispatch({
-                    type: 'hide-prompt'
-                })
+    //         // OTHERWISE, PROCESS ERROR
+    //         }).catch(() => {
 
-                // SHOW ERROR
-                dispatch({
-                    type: 'add-message',
-                    payload: 'api error when submitting order'
-                })
-            })
-        }
-    }
+    //             // HIDE LOADING SCREEN
+    //             dispatch({
+    //                 type: 'hide-prompt'
+    //             })
+
+    //             // SHOW ERROR
+    //             dispatch({
+    //                 type: 'add-message',
+    //                 payload: 'api error when submitting order'
+    //             })
+    //         })
+    //     }
+    // }
 
     // MOCK CALL
-    /* function mock() {
+    function mock() {
         if (state.session.active) {
 
             // SHOW LOADING SCREEN
@@ -103,12 +109,6 @@ function Order() {
                         })
                     }
 
-                    // RESET THE CART, STOP LOADING & SHOW MESSAGE
-                    dispatch({
-                        type: 'reset-cart',
-                        payload: 'order placed'
-                    })
-
                 // OTHERWISE, SHOW ERROR
                 } else {
                     dispatch({
@@ -118,7 +118,7 @@ function Order() {
                 }
             })
         }
-    } */
+    }
     
     // SWITCH CONTENT
     switch(Object.keys(state.cart).length) {
@@ -134,7 +134,7 @@ function Order() {
                 <Button
                     header={ local.header }
                     type={ local.type }
-                    func={ execute }
+                    func={ mock }
                 />
             </div>
         )}

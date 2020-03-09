@@ -1,10 +1,10 @@
 import axios from 'axios';
-import keys from '../../keys.json';
+import { delivery as delivery_key } from '../keys.js';
 
 // API CONFIG
 const config = {
     headers: {
-        "x-api-key": keys.delivery
+        "x-api-key": delivery_key
     }
 }
 
