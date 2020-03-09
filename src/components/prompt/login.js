@@ -3,7 +3,8 @@ import { Context } from "../context";
 import reducer from '../../states/input';
 import { key_listener } from '../../funcs/misc';
 
-import { login as mock_login } from '../../funcs/mock/customers';
+import { login } from '../../funcs/api/customers';
+//import { login as mock_login } from '../../funcs/mock/customers';
 
 import EventListener from 'react-event-listener';
 import Email from '../input/email';
@@ -37,6 +38,46 @@ function Login() {
         })
 
         // ATTEMPT TO LOGIN
+        login({
+            email: local.email.value,
+            password: local.password.value
+
+        // IF EVERYTHING WENT FINE
+        }).then(result => {
+
+            // IF EVERYTHING WENT WELL
+            if (result.status === 200 && result.data) {
+
+                // LOG IN & HIDE PROMPT
+                dispatch({
+                    type: 'login',
+                    payload: {
+                        user: local.email.value,
+                        msg: 'successfully logged in'
+                    }
+                })
+            }
+
+        // OTHERWISE, PROCESS ERROR
+        }).catch(() => {
+
+            // HIDE LOADING SCREEN
+            dispatch({
+                type: 'hide-prompt'
+            })
+
+            // SHOW ERROR
+            dispatch({
+                type: 'add-message',
+                payload: 'this combination does not exist'
+            })
+        })
+    }
+
+    // MOCK CALL
+    /* function mock() {
+
+        // ATTEMPT TO LOGIN
         mock_login().then(result => {
 
             // IF EVERYTHING WENT WELL
@@ -67,7 +108,7 @@ function Login() {
                 })
             }
         })
-    }
+    } */
     
     return (
         <Fragment>

@@ -61,11 +61,15 @@ function reducer(state, { type, payload }) {
       case 'login': { return {
          ...state,
          logged: true,
-         user: payload,
+         user: payload.user,
          prompt: {
             ...state.prompt,
             visible: false
-         }
+         },
+         messages: [
+            ...state.messages,
+            payload.msg
+         ]
       }}
 
       // LOGOUT

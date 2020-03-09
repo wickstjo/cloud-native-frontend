@@ -1,9 +1,10 @@
 import React, { Fragment, useContext, useReducer } from 'react';
 import { Context } from "../context";
 import reducer from '../../states/input';
-
 import { key_listener } from '../../funcs/misc';
-import { register as mock_register } from '../../funcs/mock/customers';
+
+import { register } from '../../funcs/api/customers';
+//import { register as mock_register } from '../../funcs/mock/customers';
 
 import EventListener from 'react-event-listener';
 import Email from '../input/email';
@@ -54,6 +55,47 @@ function Register() {
         })
 
         // ATTEMPT TO REGISTER
+        register({
+            email: local.email.value,
+            password: local.password.value,
+            fname: local.fname.value,
+            lname: local.lname.value,
+            address: local.address.value
+
+        // IF EVERYTHING WENT FINE
+        }).then(result => {
+            if (result.status === 201) {
+
+                // REGISTER, LOGIN & HIDE PROMPT
+                dispatch({
+                    type: 'login',
+                    payload: {
+                        user: local.email.value,
+                        msg: 'successfully registered & logged in'
+                    }
+                })
+            }
+
+        // OTHERWISE, PROCESS ERROR
+        }).catch(() => {
+
+            // HIDE LOADING SCREEN
+            dispatch({
+                type: 'hide-prompt'
+            })
+
+            // SHOW ERROR
+            dispatch({
+                type: 'add-message',
+                payload: 'email already in use'
+            })
+        })
+    }
+
+    // MOCK CALL
+    /* function mock() {
+
+        // ATTEMPT TO REGISTER
         mock_register().then(result => {
 
             // IF EVERYTHING WENT WELL
@@ -84,7 +126,7 @@ function Register() {
                 })
             }
         })
-    }
+    } */
     
     return (
         <Fragment>

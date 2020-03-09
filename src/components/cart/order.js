@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from "../context";
 
-import { submit as mock_submit } from '../../funcs/mock/delivery';
+import { submit } from '../../funcs/api/delivery';
+//import { submit as mock_submit } from '../../funcs/mock/delivery';
 
 function Order() {
 
@@ -31,6 +32,46 @@ function Order() {
 
     // PLACE ORDER
     function execute() {
+        if (state.logged) {
+
+            // ATTEMPT TO LOGIN
+            submit({
+                user: state.user,
+                order: state.cart
+
+            // IF EVERYTHING WENT FINE
+            }).then(result => {
+                console.log(result)
+
+                // IF EVERYTHING WENT WELL
+                if (result.status === 200 && result.data) {
+
+                    // RESET THE CART, STOP LOADING & SHOW MESSAGE
+                    dispatch({
+                        type: 'reset-cart',
+                        payload: 'order placed'
+                    })
+                }
+
+            // OTHERWISE, PROCESS ERROR
+            }).catch(() => {
+
+                // HIDE LOADING SCREEN
+                dispatch({
+                    type: 'hide-prompt'
+                })
+
+                // SHOW ERROR
+                dispatch({
+                    type: 'add-message',
+                    payload: 'api error when submitting order'
+                })
+            })
+        }
+    }
+
+    // MOCK CALL
+    /* function mock() {
         if (state.logged) {
 
             // SHOW LOADING SCREEN
@@ -77,7 +118,7 @@ function Order() {
                 }
             })
         }
-    }
+    } */
     
     // SWITCH CONTENT
     switch(Object.keys(state.cart).length) {
